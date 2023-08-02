@@ -1,0 +1,139 @@
+.profile {
+    padding: 30px;
+}
+.profile-header {
+    width: 100%;
+    height: 400px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    background-color: var(--white-color);
+    border-radius: 30px;
+}
+
+.profile-image-wrapper {
+    width: 120px;
+    height: 120px;
+    position: relative;
+    text-align: center;
+}
+
+.profile-image {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    border: 1px solid var(--gray-color);
+    object-fit: cover;
+}
+
+.upload-profile-photo,
+.upload-profile-photo-btn {
+    color: var(--main-color);
+    background-color: var(--gray-color);
+    border: 1px solid var(--main-color);
+    border-radius: 50%;
+    padding: 0 5px;
+    position: absolute;
+    bottom: -5px;
+    right: -5px;
+    margin: auto;
+    width: max-content;
+    cursor: pointer;
+    z-index: 10;
+    font-size: 25px;
+
+}
+
+
+.upload-profile-photo-btn {
+    border-radius: 5px;
+    font-size: 14px;
+    font-weight: bold;
+    right: -65px;
+}
+.upload-profile-photo-btn:hover {
+    background-color: var(--main-color);
+    color: var(--gray-color);
+    border: 1px solid var(--gray-color);
+}
+
+
+.profile-username {
+    font-size: 30px;
+    color: var(--dark-color);
+    margin: 10px 0;
+}
+
+.profile-bio {
+    font-size: 18px;
+    font-weight: 500;
+    color: var(--gray-color);
+    margin: 10px 0;
+}
+
+.user-date-joined strong {
+    color: var(--gray-color);
+    font-size: 17px;
+}
+
+.user-date-joined span {
+    color: var(--green-sea-color);
+    font-size: 15px;
+    font-weight: 500;
+} 
+
+
+.profile-update-btn {
+    font-size: 21px;
+    font-weight: 500;
+    background-color: var(--green-sea-color);
+    color: var(--white-color);
+    border: none;
+    padding: 5px 10px;
+    border-radius: 10px;
+    margin-top: 20px;
+    cursor: pointer;
+}
+.profile-update-btn:hover {
+    background-color: var(--white-color);
+    color: var(--green-sea-color);
+    border: 1px solid var(--green-sea-color);
+}
+
+.profile-posts-list {
+    width: 90%;
+    margin: 20px;
+}
+.profile-list-title {
+    margin-bottom: 20px;
+    padding: 5px 0;
+    font-size: 40px;
+    color: var(--gray-color);
+    border-bottom: 2px solid var(--dark-color);
+}
+
+.delete-account-btn {
+    background-color: var(--red-color);
+    color: var(--white-color);
+    border-radius: 5px;
+    padding: 5px;
+    border: 1px solid var(--white-color);
+    cursor: pointer;
+    font-size: 18px;
+    font-weight: 500;
+}
+
+.delete-account-btn:hover {
+    background-color: var(--white-color);
+    color: var(--red-color);
+    border: 1px solid var(--red-color);
+}
+.profile-loader {
+    min-height: calc(100vh - 130px);
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 20px 0;
+}
