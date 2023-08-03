@@ -1,7 +1,4 @@
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
-
-import "bootstrap";
-
 import { ToastContainer } from "react-toastify";
 import Header from "./components/header/Header";
 import Home from "./pages/home/Home";
