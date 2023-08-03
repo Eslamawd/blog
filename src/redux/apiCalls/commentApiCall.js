@@ -12,7 +12,7 @@ export function createComment(newComment) {
                     Authorization: "Bearer " + getState().auth.user.token,
                 }
             });
-            await dispatch(postActions.addCommentPost(data));
+           dispatch(postActions.addCommentPost(data));
 
         } catch (error) {
           toast.error(error.response.data.message)
@@ -31,7 +31,7 @@ export function updateCommentPost(commentId, comment) {
                     Authorization: "Bearer " + getState().auth.user.token,
                 }
             });
-           await dispatch(postActions.updateCommentPost(data));
+            dispatch(postActions.updateCommentPost(data));
 
         } catch (error) {
           toast.error(error.response.data.message);
@@ -49,14 +49,11 @@ export function deleteCommentPost(commentId) {
                 headers: {
                     Authorization: "Bearer " + getState().auth.user.token,
                 }
-            })
-            try {
+            });
                 dispatch(commentActions.deleteComment(commentId));
                 dispatch(postActions.deleteCommentFromPost(commentId));
                 
-            } catch (error) {
-                console.log(error)
-            }
+           
 
         } catch (error) {
           toast.error(error.response.data.message)

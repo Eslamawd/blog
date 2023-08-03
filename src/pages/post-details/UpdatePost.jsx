@@ -31,7 +31,7 @@ const UpdatePost = ({ setUpdatePost, post }) => {
 
     useEffect(() => {
         dispatch(featchCategories())
-    },[])
+    },[dispatch])
 
     return (
         <div className="update-post">

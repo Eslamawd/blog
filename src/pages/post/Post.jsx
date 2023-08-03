@@ -22,11 +22,11 @@ const Post = () => {
   useEffect(() => {
     dispatch(fetchPosts(currentPage))
     window.scrollTo(0, 0)
-  }, [currentPage]);
+  }, [currentPage, dispatch]);
 
   useEffect(() => {
     dispatch(getPostCount())
-  }, []);
+  }, [dispatch]);
     return (
        <>
        <section className="posts-page">

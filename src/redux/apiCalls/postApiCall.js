@@ -97,7 +97,7 @@ export function toggleLikePost(postId) {
 }
 
 export function updatePostImage(newImage, postId) {
-    return async (dispatch, getState) => {
+    return async (getState) => {
         try {
              await request.put(`/api/posts/update-image/${postId}`, newImage, {
                 headers: {
