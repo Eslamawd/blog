@@ -45,7 +45,7 @@ export function updateProfile(userId, profile) {
         try {
             const { data } = await request.put(`/api/users/profile/${userId}`, profile, {
                 headers: {
-                    Authorization: "Bearer" + getState().auth.user.token,
+                    Authorization: "Bearer " + getState().auth.user.token,
                 }
             });
 
