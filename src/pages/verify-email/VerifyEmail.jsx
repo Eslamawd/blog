@@ -12,7 +12,7 @@ const VerifyEmail = () => {
     const {userId, token } = useParams()
 
     useEffect(()=> {
-        dispatch(verifyEmail(userId, token))
+        dispatch(verifyEmail(userId, token));
 
     }, [userId, token])
    

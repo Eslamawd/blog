@@ -29,9 +29,10 @@ const UpdateProfile = ({ setUpdateProfile, profile }) => {
         <div className="update-profile">
             <form onClick={formSubmitUpdateHandler}  className="update-profile-form">
                 <abbr title="close">
-                    <i onClick={() => setUpdateProfile(prev => !prev)} className="bi bi-x-circle-fill update-profile-form-close">x</i>
+                    <i onClick={() => setUpdateProfile(false)} className="bi bi-x-circle-fill update-profile-form-close">x</i>
                 </abbr>
                 <h1 className="update-profile-title">Update Profile</h1>
+                <>
                 <input 
                     type="text"
                     className="update-profile-input" 
@@ -52,7 +53,8 @@ const UpdateProfile = ({ setUpdateProfile, profile }) => {
                     value={password}
                     placeholder='password'
                     onChange={(e) => setPassword(e.target.value)}
-                />
+                    />
+                    </>
                     <button onClick={() => setUpdateProfile(false)} type="submit" className="update-profile-btn">
                         Update Profile
                     </button>
