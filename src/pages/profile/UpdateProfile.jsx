@@ -27,7 +27,7 @@ const UpdateProfile = ({ setUpdateProfile, profile }) => {
     }
     return (
         <div className="update-profile">
-            <form onClick={formSubmitUpdateHandler}  className="update-profile-form">
+            <form onSubmit={formSubmitUpdateHandler}  className="update-profile-form">
                 <abbr title="close">
                     <i onClick={() => setUpdateProfile(false)} className="bi bi-x-circle-fill update-profile-form-close">x</i>
                 </abbr>

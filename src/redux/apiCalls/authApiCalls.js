@@ -40,13 +40,12 @@ export function registerUser(user) {
 }
 
 export function verifyEmail(userId, token) {
-    return async (dispatch, getState) => {
+    return async (dispatch) => {
         try {
             await request.get(`api/auth/${userId}/verify/${token}`);
             dispatch(authActions.setIsEmailVerify());
 
         } catch (error) {
-          toast.error(error.response.data.message);
           console.log(error);
         }
 
