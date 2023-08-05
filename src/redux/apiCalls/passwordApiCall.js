@@ -4,9 +4,9 @@ import { toast } from "react-toastify";
 
 
 export function forgotPassword(email) {
-    return async (dispatch) => {
+    return async () => {
         try {
-            const { data } = await request.post("/api/password/reset-password-link", { email });
+            const { data } = await request.post("/api/password/reset-password-link", {email});
             toast.success(data.message);
 
         } catch (error) {
