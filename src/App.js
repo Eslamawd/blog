@@ -49,9 +49,9 @@ function App() {
       <Route path="/" element={ <Home /> }/>
       <Route path="/login" element={ !user ? <Login /> : <Navigate to="/" />} />
       <Route path="/signup" element={  !user ? <SignUp /> : <Navigate to="/" />} />
-      <Route path="/users/:userId/verify/:token/a%7d" element={  !user ? <VerifyEmail /> : <Navigate to="/" />} />
+      <Route path="/users/:userId/verify/:token/%7D" element={  !user ? <VerifyEmail /> : <Navigate to="/" />} />
       <Route path="/forget-password" element={<ForgetPassword />} /> 
-      <Route path="/reset-password/:userId/:token/a%7d" element={<ResetPassword />} /> 
+      <Route path="/reset-password/:userId/:token/%7D" element={<ResetPassword />} /> 
 
       <Route path="/profile/:id" element={ <Profile /> }/>
       
