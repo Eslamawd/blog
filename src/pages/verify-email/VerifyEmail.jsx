@@ -8,14 +8,14 @@ const VerifyEmail = () => {
 
     const dispatch = useDispatch();
 
-    const { isEmailVerify } =  useSelector(state => state.auth);
+    const { isEmailVerify } =  useSelector((state) => state.auth);
 
     const { userId, token } = useParams();
 
     useEffect(() => {
         dispatch(verifyEmail(userId, token));
 
-    }, [dispatch, userId, token]);
+    }, [userId, token]);
    
     return (
        <section className="verivy-email">

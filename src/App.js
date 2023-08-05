@@ -1,5 +1,7 @@
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import { ToastContainer } from "react-toastify";
+
+
 import Header from "./components/header/Header";
 import Home from "./pages/home/Home";
 import Login from "./pages/forms/Login";
@@ -18,8 +20,9 @@ import CommentsTable from "./pages/admin/CommentsTable";
 import ForgetPassword from "./pages/forms/ForgetPassword";
 import ResetPassword from "./pages/forms/ResetPassword";
 import NotFound from "./pages/not-found/NotFound";
-import { useSelector } from "react-redux";
 import VerifyEmail from "./pages/verify-email/VerifyEmail";
+
+import { useSelector } from "react-redux";
 import { disableReactDevTools } from "@fvilers/disable-react-devtools";
 
 
@@ -46,12 +49,12 @@ function App() {
              />
      < Header />
      <Routes>
-      <Route path="/" element={ <Home /> }/>
-      <Route path="/login" element={!user ? <Login /> : <Navigate to="/" />} />
-      <Route path="/signup" element={!user ? <SignUp /> : <Navigate to="/" />} />
-      <Route path="/users/:userId/verify/:token/%7D" element={!user ? <VerifyEmail /> : <Navigate to="/" />} />
-      <Route path="/forget-password" element={<ForgetPassword />} /> 
-      <Route path="/reset-password/:userId/:token/%7D" element={<ResetPassword />} /> 
+      <Route path="/" element={ < Home /> }/>
+      <Route path="/login" element={!user ? < Login /> : <Navigate to="/" />} />
+      <Route path="/signup" element={!user ? < SignUp /> : <Navigate to="/" />} />
+      <Route path="/users/:userId/verify/:token/:a" element={!user ? <VerifyEmail /> : <Navigate to="/" />} />
+      <Route path="/forget-password" element={< ForgetPassword />} /> 
+      <Route path="/reset-password/:userId/:token/:a" element={< ResetPassword />} /> 
 
       <Route path="/profile/:id" element={ <Profile /> }/>
       
