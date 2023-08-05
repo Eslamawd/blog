@@ -7,14 +7,15 @@ import { verifyEmail } from "../../redux/apiCalls/authApiCalls";
 const VerifyEmail = () => {
 
     const dispatch = useDispatch();
+
     const { isEmailVerify } =  useSelector(state => state.auth);
 
-    const {userId, token } = useParams();
+    const { userId, token } = useParams();
 
-    useEffect(()=> {
+    useEffect(() => {
         dispatch(verifyEmail(userId, token));
 
-    }, [userId, token]);
+    }, []);
    
     return (
        <section className="verivy-email">
