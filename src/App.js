@@ -73,7 +73,10 @@ function App() {
       <Route path="comments-table" element={ user?.isAdmin? <CommentsTable /> : <Navigate to="/" />} />
       </Route>
 
-      <Route path="*" element={<NotFound />} />
+      <Route 
+        path="/*" 
+        element={ <NotFound /> } 
+      />
 
      </Routes>
      <Footer/>

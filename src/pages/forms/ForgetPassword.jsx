@@ -19,7 +19,7 @@ const ForgetPassword = () => {
         if (email.trim() === "") {
              return toast.error("pleasse your Email");
         }
-        dispatch(forgotPassword(email));
+        dispatch(forgotPassword({ email }));
     }
 
 
