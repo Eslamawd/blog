@@ -6,7 +6,7 @@ import { toast } from "react-toastify";
 export function forgotPassword(email) {
     return async () => {
         try {
-            const { data } = await request.post("/api/password/reset-password-link", email);
+            const { data } = await request.post("/api/password/reset-password-link", {email});
             toast.success(data.message);
 
         } catch (error) {
@@ -34,11 +34,9 @@ export function resetPassword(newPassword,user) {
     return async (dispatch) => {
         try {
            const { data } = await request.post(
-            `/api/password/reset-password/${user.userId}/${user.token}`,
-            {
+            `/api/password/reset-password/${user.userId}/${user.token}`,{
                 password: newPassword,
-            }
-             );
+            });
            toast.success(data.message);
 
         } catch (error) {
