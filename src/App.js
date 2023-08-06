@@ -74,8 +74,8 @@ function App() {
       </Route>
 
       <Route 
-        path="*"
-        element={ <NotFound /> } 
+        path="/"
+        errorElement={ < NotFound /> } 
       />
 
      </Routes>

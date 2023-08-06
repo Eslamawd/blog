@@ -14,16 +14,16 @@ const UpdateProfile = ({ setUpdateProfile, profile }) => {
     const [password, setPassword ] = useState("");
 
     const formSubmitUpdateHandler = (e) => {
-        e.preventDefault()
+        e.preventDefault();
 
         const updatedUser = { username, bio }
 
         if (password.trim() !== "") {
-            updatedUser.password = password
+            updatedUser.password = password;
          }
 
-       dispatch(updateProfile(profile?._id, updatedUser))
-       setUpdateProfile(false)
+       dispatch(updateProfile(profile?._id, updatedUser));
+       setUpdateProfile(false);
     }
     return (
         <div className="update-profile">
