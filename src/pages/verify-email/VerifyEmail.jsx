@@ -15,7 +15,7 @@ const VerifyEmail = () => {
     useEffect(() => {
         dispatch(verifyEmail(userId, token));
 
-    }, [userId, token]);
+    }, [dispatch, userId, token]);
    
     return (
        <section className="verivy-email">

@@ -20,9 +20,7 @@ export function forgotPassword(email) {
 export function getResetPassword(userId, token) {
     return async (dispatch) => {
         try {
-         await request.get(`/api/password/reset-password/${userId}/${token}`);
-      
-           
+         await request.get(`/api/password/reset-password/${userId}/${token}`);   
 
         } catch (error) {
             console.log(error);

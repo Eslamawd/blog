@@ -7,18 +7,19 @@ import { forgotPassword } from '../../redux/apiCalls/passwordApiCall';
 
 const ForgetPassword = () => {
 
-    const dispatch = useDispatch()
+    const dispatch = useDispatch();
 
-    const [email, setEmail] = useState("")
+    const [email, setEmail] = useState("");
 
 
 
 
     const formSubmitHandler = (e) => {
-        e.preventDefault()
-        if (email.trim() === "") return toast.error("pleasse your Email")
-
-        dispatch(forgotPassword(email))
+        e.preventDefault();
+        if (email.trim() === "") {
+             return toast.error("pleasse your Email");
+        }
+        dispatch(forgotPassword(email));
     }
 
 
@@ -41,9 +42,12 @@ const ForgetPassword = () => {
                         />
                     </div>
              
+             <div>
+
                     <button className="form-btn" type="submit">
                         ForgetPassword
                     </button>
+             </div>
                 </form>
                 <div className="form-footer">
                 Did you forget password?
