@@ -43,7 +43,7 @@ export function uploadProfilePhoto(newPhoto) {
 export function updateProfile(userId, profile) {
     return async (dispatch, getState) => {
         try {
-            const { data } = await request.put(`/api/users/profile/${userId}`, profile, {
+            const { data } = await request.put(`/api/users/profile/${userId}`, {profile}, {
                 headers: {
                     Authorization: "Bearer " + getState().auth.user.token,
                 }
@@ -54,7 +54,7 @@ export function updateProfile(userId, profile) {
             toast.success(data.message);
 
             const user = JSON.parse(localStorage.getItem("userInfo"));
-            user.username = data?.username
+            user.username = data?.username;
             localStorage.setItem("userInfo", JSON.stringify(user));
 
         } catch (error) {

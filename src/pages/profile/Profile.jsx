@@ -36,7 +36,7 @@ const Profile = () => {
     useEffect(() => {
         dispatch(getUserProfile(id))
         window.scrollTo(0, 0)
-      }, [id]);
+      }, [dispatch, id]);
 
       const navigate = useNavigate();
     useEffect(() => {
@@ -116,7 +116,7 @@ const Profile = () => {
                 </div>
                 <h1 className="profile-username">{profile?.username}</h1>
                 <p className="profile-bio">
-                 { profile?.bio}
+                 {profile?.bio}
                 </p>
                 <div className="user-date-joined">
                     <strong>Date Joined: </strong>
