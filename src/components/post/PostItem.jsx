@@ -33,9 +33,6 @@ const PostItem = ({ post, userId, username }) => {
                 </div>
                 <p className="post-item-description">
                     {post?.description}
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Sint unde neque eius a magnam tempora fugit exercitationem dicta sit iure similique corporis est, quisquam temporibus? Eligendi doloremque veniam cupiditate magnam?
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Sint unde neque eius a magnam tempora fugit exercitationem dicta sit iure similique corporis est, quisquam temporibus? Eligendi doloremque veniam cupiditate magnam?
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Sint unde neque eius a magnam tempora fugit exercitationem dicta sit iure similique corporis est, quisquam temporibus? Eligendi doloremque veniam cupiditate magnam?
                 </p>
                 <Link className="post-item-link" to={`/posts/details/${post?._id}`}>
                 Read More.... 
