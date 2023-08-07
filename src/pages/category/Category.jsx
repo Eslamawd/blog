@@ -6,9 +6,9 @@ import { useDispatch, useSelector } from "react-redux";
 import { getPostCategory } from "../../redux/apiCalls/postApiCall";
 
 const Category = () => {
-    const { category } = useParams()
-    const dispatch = useDispatch()
-    const { postsCat } = useSelector(state => state.post)
+    const { category } = useParams();
+    const dispatch = useDispatch();
+    const { postsCat } = useSelector(state => state.post);
 
 
 

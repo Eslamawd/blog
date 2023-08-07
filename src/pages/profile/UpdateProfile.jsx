@@ -7,7 +7,7 @@ import { updateProfile } from '../../redux/apiCalls/profileApiCall';
 
 const UpdateProfile = ({ setUpdateProfile, profile }) => {
 
-    const dispatch = useDispatch()
+    const dispatch = useDispatch();
 
     const [username, setUsername] = useState(profile.username);
     const [bio, setBio] = useState(profile.bio);
@@ -22,7 +22,7 @@ const UpdateProfile = ({ setUpdateProfile, profile }) => {
             updatedUser.password = password;
          }
 
-       dispatch(updateProfile(profile?._id, updatedUser ));
+       dispatch(updateProfile(profile?._id, updatedUser));
        setUpdateProfile(false);
     }
     return (
@@ -57,7 +57,9 @@ const UpdateProfile = ({ setUpdateProfile, profile }) => {
                     onChange={(e) => setPassword(e.target.value)}
                     />
                     </>
-                    <button onClick={() => setUpdateProfile(false)} type="submit" className="update-profile-btn">
+                    <button 
+                        type="submit"
+                        className="update-profile-btn">
                         Update Profile
                     </button>
             </form>
