@@ -1,8 +1,7 @@
-import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
+import { BrowserRouter, Routes, Route, Navigate} from "react-router-dom";
 import { ToastContainer } from "react-toastify";
 
 
-import Header from "./components/header/Header";
 import Home from "./pages/home/Home";
 import Login from "./pages/forms/Login";
 import SignUp from "./pages/forms/SignUp";
@@ -24,6 +23,7 @@ import VerifyEmail from "./pages/verify-email/VerifyEmail";
 
 import { useSelector } from "react-redux";
 import { disableReactDevTools } from "@fvilers/disable-react-devtools";
+import LayOut from "./pages/out-let/LayOut";
 
 
 if (process.env.NODE_ENV === 'production') disableReactDevTools()
@@ -47,16 +47,17 @@ function App() {
             pauseOnHover
             theme="light"
              />
-     < Header />
-     <Routes>
-      <Route path="/" element={ < Home /> }/>
-      <Route path="/login" element={!user ? < Login /> : <Navigate to="/" />} />
-      <Route path="/signup" element={!user ? < SignUp /> : <Navigate to="/" />} />
-      <Route path="/users/:userId/verify/:token/:a" element={!user ? <VerifyEmail /> : <Navigate to="/" />} />
-      <Route path="/forget-password" element={< ForgetPassword />} /> 
-      <Route path="/reset-password/:userId/:token/:a" element={< ResetPassword />} /> 
 
-      <Route path="/profile/:id" element={ <Profile /> }/>
+     <Routes>
+     <Route path="/" element={ <LayOut /> }>
+      <Route index element={ < Home /> }/>
+      <Route path="login" element={!user ? < Login /> : <Navigate to="/" />} />
+      <Route path="signup" element={!user ? < SignUp /> : <Navigate to="/" />} />
+      <Route path="users/:userId/verify/:token/:a" element={!user ? <VerifyEmail /> : <Navigate to="/" />} />
+      <Route path="forget-password" element={< ForgetPassword />} /> 
+      <Route path="reset-password/:userId/:token/:a" element={< ResetPassword />} /> 
+
+      <Route path="profile/:id" element={ <Profile /> }/>
       
       <Route path="posts">
          <Route index element={ <Post /> }/>
@@ -65,7 +66,7 @@ function App() {
          <Route path="categories/:category" element={ <Category /> }/>
       </Route>
       
-      <Route path="/admin">
+      <Route path="admin">
       <Route index element={ user?.isAdmin?  <Admin /> : <Navigate to="/" />  }/>
       <Route path="users-table" element={ user?.isAdmin? <UsersTable /> : <Navigate to="/" />} />
       <Route path="posts-table" element={ user?.isAdmin? <PostTable /> : <Navigate to="/" />} />
@@ -74,9 +75,10 @@ function App() {
       </Route>
 
       <Route 
-        path='*'
-        errorElement={ < NotFound /> } 
+        path="*"
+        element={ < NotFound /> } 
       />
+      </Route>
 
      </Routes>
      <Footer/>
