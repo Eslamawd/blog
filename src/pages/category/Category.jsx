@@ -13,9 +13,9 @@ const Category = () => {
 
 
     useEffect(() => {
-        dispatch(getPostCategory(category))
-        window.scrollTo(0, 0)
-      }, [category])
+        dispatch(getPostCategory(category));
+        window.scrollTo(0, 0);
+      }, [dispatch,category]);
 
     return (
         <section className="category">
