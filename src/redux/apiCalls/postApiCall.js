@@ -6,7 +6,7 @@ import { toast } from "react-toastify"
 export function fetchPosts(pageNumber) {
     return async (dispatch) => {
         try {
-            const { data } = await request.get(`/api/posts?pageNumper=${pageNumber}`)
+            const { data } = await request.get(`/api/posts?pageNumber=${pageNumber}`)
             dispatch(postActions.setPosts(data))
 
         } catch (error) {
@@ -33,7 +33,7 @@ export function getPostCount() {
 export function getPostCategory(category) {
     return async (dispatch) => {
         try {
-            const { data } = await request.get(`/api/posts?category${category}`)
+            const { data } = await request.get(`/api/posts?category=${category}`)
             dispatch(postActions.setPostsCat(data))
 
         } catch (error) {

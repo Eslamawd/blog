@@ -40,10 +40,10 @@ export function uploadProfilePhoto(newPhoto) {
 
     }
 }
-export function updateProfile(userId, profile) {
+export function updateProfile(id,updatedUser) {
     return async (dispatch, getState) => {
         try {
-            const { data } = await request.put(`/api/users/profile/${userId}`, {profile}, {
+            const { data } = await request.put(`/api/users/profile/${id}`, updatedUser, {
                 headers: {
                     Authorization: "Bearer " + getState().auth.user.token,
                 }

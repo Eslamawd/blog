@@ -22,15 +22,17 @@ const UpdateProfile = ({ setUpdateProfile, profile }) => {
             updatedUser.password = password;
          }
 
-       dispatch(updateProfile(profile?._id, updatedUser));
+       dispatch(updateProfile(profile?._id, updatedUser ));
        setUpdateProfile(false);
     }
     return (
         <div className="update-profile">
             <form onSubmit={formSubmitUpdateHandler}  className="update-profile-form">
+               <>
                 <abbr title="close">
                     <i onClick={() => setUpdateProfile(false)} className="bi bi-x-circle-fill update-profile-form-close">x</i>
                 </abbr>
+               </>
                 <h1 className="update-profile-title">Update Profile</h1>
                 <>
                 <input 
