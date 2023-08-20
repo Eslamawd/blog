@@ -17,10 +17,16 @@ const Navbar = ({ toggle, setToggle }) => {
             <i class="bi bi-stickies-fill"></i> Posts
             </Link>
             {
-                user && (
+                user && ( <>
                     <Link to="/posts/create-post" onClick={() => setToggle(false)} className="nav-link">
                     <i class="bi bi-plus-square-fill"></i> Create
                     </Link>
+                    
+                    <Link to="/frinds" onClick={() => setToggle(false)} className="nav-link">
+                    <i class="bi bi-plus-square-fill"></i> Requist
+                    </Link>
+                    </>
+
 
                 )
             }

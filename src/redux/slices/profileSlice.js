@@ -9,6 +9,8 @@ const profileSlice = createSlice({
         isProfileDeleted: false,
         usersCount: null,
         profiles: [],
+        requist: [],
+        frinds: [],
     },
     reducers: {
         setProfile(state, action) {
@@ -39,6 +41,12 @@ const profileSlice = createSlice({
         },
         setProfiles(state, action) {
             state.profiles = action.payload
+        },
+        setRequist(state, action) {
+            state.requist = action.payload
+        },
+        setFrinds(state, action) {
+            state.requist = action.payload
         }
 
  

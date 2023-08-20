@@ -24,6 +24,7 @@ import VerifyEmail from "./pages/verify-email/VerifyEmail";
 import { useSelector } from "react-redux";
 import { disableReactDevTools } from "@fvilers/disable-react-devtools";
 import LayOut from "./pages/out-let/LayOut";
+import Frinds from "./pages/frinds/Frinds";
 
 
 if (process.env.NODE_ENV === 'production') disableReactDevTools()
@@ -58,6 +59,8 @@ function App() {
       <Route path="reset-password/:userId/:token/:a" element={< ResetPassword />} /> 
 
       <Route path="profile/:id" element={ <Profile /> }/>
+      <Route path="frinds" element={ <Frinds /> }/>
+      
       
       <Route path="posts">
          <Route index element={ <Post /> }/>

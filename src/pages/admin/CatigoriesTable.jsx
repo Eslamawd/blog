@@ -33,7 +33,7 @@ const CategoriesTable = () => {
           });
       }
     return (
-       <sectiom className="table-container">
+       <section className="table-container">
         <AdminSidebar />
         <div className="table-wrapper">
             <h1 className="table-title">
@@ -68,7 +68,7 @@ const CategoriesTable = () => {
                 </tbody>
             </table>
         </div>
-       </sectiom>
+       </section>
     );
 };
 

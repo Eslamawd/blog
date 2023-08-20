@@ -34,7 +34,7 @@ const UsersTable = () => {
           });
       }
     return (
-       <sectiom className="table-container">
+       <section className="table-container">
         <AdminSidebar />
         <div className="table-wrapper">
             <h1 className="table-title">
@@ -85,7 +85,7 @@ const UsersTable = () => {
                 </tbody>
             </table>
         </div>
-       </sectiom>
+       </section>
     );
 };
 

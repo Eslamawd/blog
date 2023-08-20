@@ -38,7 +38,7 @@ const CommentsTable = () => {
 
 
     return (
-       <sectiom className="table-container">
+       <section className="table-container">
         <AdminSidebar />
         <div className="table-wrapper">
             <h1 className="table-title">
@@ -86,7 +86,7 @@ const CommentsTable = () => {
                 </tbody>
             </table>
         </div>
-       </sectiom>
+       </section>
     );
 };
 
