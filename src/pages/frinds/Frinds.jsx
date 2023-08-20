@@ -35,7 +35,6 @@ const Frinds = () => {
           .then((willDelete) => {
             if (willDelete) {
               dispatch(deleteRequist(id))
-              dispatch(getRequistFrinds())
             } 
           });
       }
