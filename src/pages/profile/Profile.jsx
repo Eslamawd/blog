@@ -156,7 +156,7 @@ const Profile = () => {
                  Message
                  </button>
                  )}
-                 {(!isRequist || !isUserSend || !isFrinds || user?._id !== profile?._id) ? (
+                 {(!isRequist && !isUserSend && !isFrinds && user?._id !== profile?._id) ? (
                   <button className="profile-update-btn" onClick={() => setUpdateProfile(true)}>
                   <i className="bi bi-file-person-fill"></i>
                    Add Freind
