@@ -3,7 +3,7 @@ import { useEffect } from 'react';
 import { useSelector, useDispatch } from "react-redux";
 
 import  swal  from "sweetalert";
-import { frindOkRequist, getRequistFrinds, deleteRequist } from '../../redux/apiCalls/profileApiCall';
+import { frindOkRequist, getRequistFrinds, deleteRequist } from '../../redux/apiCalls/frindsApiCalls';
 import { useNavigate } from "react-router-dom";
 
 const Frinds = () => {
@@ -20,8 +20,6 @@ const Frinds = () => {
     
     const addToFrinds = (id) => {
         dispatch(frindOkRequist(id))
-        dispatch(getRequistFrinds())
-
     }
 
     const deletedRequist = (id) => {
