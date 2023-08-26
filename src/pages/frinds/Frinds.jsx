@@ -3,7 +3,7 @@ import { useEffect } from 'react';
 import { useSelector, useDispatch } from "react-redux";
 
 import  swal  from "sweetalert";
-import { frindOkRequist, getRequistFrinds } from '../../redux/apiCalls/profileApiCall';
+import { frindOkRequist, getRequistFrinds, deleteRequist } from '../../redux/apiCalls/profileApiCall';
 import { useNavigate } from "react-router-dom";
 
 const Frinds = () => {
@@ -24,7 +24,7 @@ const Frinds = () => {
 
     }
 
-    const deleteRequist = (id) => {
+    const deletedRequist = (id) => {
         swal({
             title: "Are you sure?",
             text: "Once deleted, you will not be able to recover this Requist!",
@@ -74,7 +74,7 @@ const Frinds = () => {
                                     <button onClick={() => addToFrinds(item._id)}>
                                             Frinds
                                     </button>
-                                    <button onClick={() => deleteRequist(item._id)}>
+                                    <button onClick={() => deletedRequist(item._id)}>
                                         Delete
                                     </button>
                                 </div>

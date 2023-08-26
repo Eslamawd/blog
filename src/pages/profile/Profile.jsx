@@ -32,6 +32,11 @@ const Profile = () => {
     
     const { id } =  useParams();
 
+    
+    const isRequist = user?.requestFrinds?.find((user) => user.toString() === profile._id)
+    const isUserSend = user?.sendRequist?.find((user) => user.toString() === profile._id)
+    const isFrinds = user?.frinds?.find((user) => user.toString() === profile._id)
+
 
     useEffect(() => {
         dispatch(getUserProfile(id))
@@ -128,6 +133,38 @@ const Profile = () => {
                  Update Profile
                  </button>
                )}
+               {isRequist && (
+                <>
+                 <button className="profile-update-btn" onClick={() => setUpdateProfile(true)}>
+                 <i className="bi bi-file-person-fill"></i>
+                 Accept
+                 </button>
+                 <button className="profile-update-btn" onClick={() => setUpdateProfile(true)}>
+                 <i className="bi bi-file-person-fill"></i>
+                 Cancel
+                 </button>
+                 </>
+                 )}
+               {isUserSend && (
+                 <button className="profile-update-btn" onClick={() => setUpdateProfile(true)}>
+                 <i className="bi bi-file-person-fill"></i>
+                 Cancel
+                 </button>
+                 )}
+               {isFrinds && (
+                 <button className="profile-update-btn" onClick={() => setUpdateProfile(true)}>
+                 <i className="bi bi-file-person-fill"></i>
+                 Message
+                 </button>
+                 )}
+                 {!isRequist || !isUserSend || !isFrinds || user?._id !== profile?._id ? (
+                  <button className="profile-update-btn" onClick={() => setUpdateProfile(true)}>
+                  <i className="bi bi-file-person-fill"></i>
+                   Add Freind
+                  </button>
+                 ) :
+                  null
+                 }
             </div>
             <div className="profile-posts-list">
                 <h2 className="profile-list-title"> {profile?.username}Posts</h2>

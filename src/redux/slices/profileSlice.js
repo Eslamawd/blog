@@ -46,8 +46,16 @@ const profileSlice = createSlice({
             state.requist = action.payload
         },
         setFrinds(state, action) {
-            state.requist = action.payload
+            state.frinds = action.payload
+        },
+        deleteRequist(state, action) {
+          state.requist = action.payload
         }
+        ,
+        deleteFrinds(state, action) {
+            state.frinds = action.payload
+        }
+
 
  
     }

@@ -29,7 +29,22 @@ const authSlice = createSlice({
             setIsEmailVerify(state) {
                 state.isEmailVerify = true;
                 state.registerMessage = null;
-            }
+            },
+            sendReq(state, action) {
+                state.user.sendRequist = action.payload
+            },
+            setFrinds(state, action) {
+                state.user.frinds = action.payload
+            },
+            clearSendReq(state, action) {
+                state.user.sendRequist = action.payload
+            },
+            clearReq(state, action) {
+                state.user.requestFrinds = action.payload
+            },
+            clearFrind(state, action) {
+                state.user.frinds = action.payload
+            },
     }
 });
 

@@ -1,5 +1,8 @@
 import { BrowserRouter, Routes, Route, Navigate} from "react-router-dom";
 import { ToastContainer } from "react-toastify";
+import io from 'socket.io-client';
+
+
 
 
 import Home from "./pages/home/Home";
@@ -25,11 +28,21 @@ import { useSelector } from "react-redux";
 import { disableReactDevTools } from "@fvilers/disable-react-devtools";
 import LayOut from "./pages/out-let/LayOut";
 import Frinds from "./pages/frinds/Frinds";
+import { useEffect } from "react";
+
+
+const socket = io('https://blog-api-61qi.onrender.com')
 
 
 if (process.env.NODE_ENV === 'production') disableReactDevTools()
 
 function App() {
+
+  useEffect(() => {
+    socket.on('connect', () => {
+      console.log('connect')
+    })
+  })
 
 
     const { user } = useSelector(state => state.auth);
