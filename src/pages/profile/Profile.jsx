@@ -133,7 +133,7 @@ const Profile = () => {
                  Update Profile
                  </button>
                )}
-               {isRequist && (
+               {isRequist ? (
                 <>
                  <button className="profile-update-btn" onClick={() => setUpdateProfile(true)}>
                  <i className="bi bi-file-person-fill"></i>
@@ -144,19 +144,19 @@ const Profile = () => {
                  Cancel
                  </button>
                  </>
-                 )}
-               {isUserSend && (
+                 ): null}
+               {isUserSend ? (
                  <button className="profile-update-btn" onClick={() => setUpdateProfile(true)}>
                  <i className="bi bi-file-person-fill"></i>
                  Cancel
                  </button>
-                 )}
-               {isFrinds && (
+                 ): null}
+               {isFrinds ? (
                  <button className="profile-update-btn" onClick={() => setUpdateProfile(true)}>
                  <i className="bi bi-file-person-fill"></i>
                  Message
                  </button>
-                 )}
+                 ): null}
                  {!isRequist || !isUserSend || !isFrinds || user?._id !== profile?._id ? (
                   <button className="profile-update-btn" onClick={() => setUpdateProfile(true)}>
                   <i className="bi bi-file-person-fill"></i>
