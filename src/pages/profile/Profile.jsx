@@ -33,9 +33,9 @@ const Profile = () => {
     const { id } =  useParams();
 
     
-    const isRequist = user?.requestFrinds?.find((user) => user.toString() === profile?._id)
-    const isUserSend = user?.sendRequist?.find((user) => user.toString() === profile?._id)
-    const isFrinds = user?.frinds?.find((user) => user.toString() === profile?._id)
+    const isRequist = user?.requestFrinds?.find((user) => user?.toString() === profile?._id)
+    const isUserSend = user?.sendRequist?.find((user) => user?.toString() === profile?._id)
+    const isFrinds = user?.frinds?.find((user) => user?.toString() === profile?._id)
 
 
     useEffect(() => {
@@ -133,7 +133,7 @@ const Profile = () => {
                  Update Profile
                  </button>
                )}
-               {isRequist ? (
+               {isRequist &&
                 <>
                  <button className="profile-update-btn" onClick={() => setUpdateProfile(true)}>
                  <i className="bi bi-file-person-fill"></i>
@@ -143,20 +143,19 @@ const Profile = () => {
                  <i className="bi bi-file-person-fill"></i>
                  Cancel
                  </button>
-                 </>
-                 ): null}
-               {isUserSend ? (
+                 </>}
+               {isUserSend && (
                  <button className="profile-update-btn" onClick={() => setUpdateProfile(true)}>
                  <i className="bi bi-file-person-fill"></i>
                  Cancel
                  </button>
-                 ): null}
-               {isFrinds ? (
+                 )}
+               {isFrinds && (
                  <button className="profile-update-btn" onClick={() => setUpdateProfile(true)}>
                  <i className="bi bi-file-person-fill"></i>
                  Message
                  </button>
-                 ): null}
+                 )}
                  {!isRequist || !isUserSend || !isFrinds || user?._id !== profile?._id ? (
                   <button className="profile-update-btn" onClick={() => setUpdateProfile(true)}>
                   <i className="bi bi-file-person-fill"></i>
