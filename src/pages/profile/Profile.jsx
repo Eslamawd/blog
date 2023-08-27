@@ -9,6 +9,7 @@ import { deleteProfile, getUserProfile, uploadProfilePhoto } from "../../redux/a
 import { logoutUser } from "../../redux/apiCalls/authApiCalls";
 import { useParams, useNavigate } from "react-router-dom";
 import { MutatingDots } from "react-loader-spinner";
+import { deleteOneFrinds, deleteOneRequist, deleteSend, frindOkRequist, newRequistFrinds } from "../../redux/apiCalls/frindsApiCalls";
 
 
 const Profile = () => {
@@ -135,29 +136,35 @@ const Profile = () => {
                )}
                {isRequist &&
                 <>
-                 <button className="profile-update-btn" onClick={() => setUpdateProfile(true)}>
+                 <button className="profile-update-btn" onClick={() => dispatch(frindOkRequist(profile?._id))}>
                  <i className="bi bi-file-person-fill"></i>
                  Accept
                  </button>
-                 <button className="profile-update-btn" onClick={() => setUpdateProfile(true)}>
+                 <button className="profile-update-btn" onClick={() => dispatch(deleteOneRequist(profile?._id))}>
                  <i className="bi bi-file-person-fill"></i>
                  Cancel
                  </button>
                  </>}
                {isUserSend && (
-                 <button className="profile-update-btn" onClick={() => setUpdateProfile(true)}>
+                 <button className="profile-update-btn" onClick={() => dispatch(deleteSend(profile?._id))}>
                  <i className="bi bi-file-person-fill"></i>
                  Cancel
                  </button>
                  )}
                {isFrinds && (
+                <>
                  <button className="profile-update-btn" onClick={() => setUpdateProfile(true)}>
                  <i className="bi bi-file-person-fill"></i>
                  Message
                  </button>
+                 <button className="profile-update-btn" onClick={() => dispatch(deleteOneFrinds(profile?._id))}>
+                 <i className="bi bi-file-person-fill"></i>
+                 Cancel frinds
+                 </button>
+                 </>
                  )}
                  {(!isRequist && !isUserSend && !isFrinds && user?._id !== profile?._id) ? (
-                  <button className="profile-update-btn" onClick={() => setUpdateProfile(true)}>
+                  <button className="profile-update-btn" onClick={() => dispatch(newRequistFrinds(profile?._id))}>
                   <i className="bi bi-file-person-fill"></i>
                    Add Freind
                   </button>

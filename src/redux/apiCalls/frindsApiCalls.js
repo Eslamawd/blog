@@ -89,9 +89,8 @@ export function frindOkRequist(id) {
                     Authorization: "Bearer " + getState().auth.user.token,
                 }
             });
-
-            dispatch(authActions.setFrinds(data))
-            dispatch(profileActions.setFrinds(data))
+          await dispatch(profileActions.setFrinds(data))
+          await dispatch(authActions.setFrinds(data))
 
         } catch (error) {
           toast.error(error.response.data.message);

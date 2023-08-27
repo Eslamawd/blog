@@ -13,7 +13,7 @@ const Frinds = () => {
 
 
     const goToRequistProfile = (id) => {
-        navigate(`profile/${id}`)
+        navigate(`/profile/${id}`)
     }
 
 
