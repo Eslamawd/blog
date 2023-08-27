@@ -76,7 +76,7 @@ const Profile = () => {
             dispatch(newRequistFrinds(id))
           }
 
-          const deleteSend = (id) => {
+          const deleteSends = (id) => {
             dispatch(deleteSend(id))
           }
 
@@ -164,7 +164,7 @@ const Profile = () => {
                  </button>
                  </>}
                {isUserSend && (
-                 <button className="profile-update-btn" onClick={() => deleteSend(profile?._id)}>
+                 <button className="profile-update-btn" onClick={() => deleteSends(profile?._id)}>
                  <i className="bi bi-file-person-fill"></i>
                  Cancel
                  </button>
