@@ -70,6 +70,24 @@ const Profile = () => {
               });
           };
 
+          //frinds in profile 
+
+          const addRequist = (id) => {
+            dispatch(newRequistFrinds(id))
+          }
+
+          const deleteSend = (id) => {
+            dispatch(deleteSend(id))
+          }
+
+          const deleteReq = (id) => {
+            dispatch(deleteOneRequist(id))
+          }
+
+          const addFrind = (id) => {
+            dispatch(frindOkRequist(id))
+          }
+
           if (loading) {
             return(
               <div className="profile-loader">
@@ -136,17 +154,17 @@ const Profile = () => {
                )}
                {isRequist &&
                 <>
-                 <button className="profile-update-btn" onClick={() => dispatch(frindOkRequist(profile?._id))}>
+                 <button className="profile-update-btn" onClick={() => addFrind(profile?._id)}>
                  <i className="bi bi-file-person-fill"></i>
                  Accept
                  </button>
-                 <button className="profile-update-btn" onClick={() => dispatch(deleteOneRequist(profile?._id))}>
+                 <button className="profile-update-btn" onClick={() => deleteReq(profile?._id) }>
                  <i className="bi bi-file-person-fill"></i>
                  Cancel
                  </button>
                  </>}
                {isUserSend && (
-                 <button className="profile-update-btn" onClick={() => dispatch(deleteSend(profile?._id))}>
+                 <button className="profile-update-btn" onClick={() => deleteSend(profile?._id)}>
                  <i className="bi bi-file-person-fill"></i>
                  Cancel
                  </button>
@@ -164,7 +182,7 @@ const Profile = () => {
                  </>
                  )}
                  {(!isRequist && !isUserSend && !isFrinds && user?._id !== profile?._id) ? (
-                  <button className="profile-update-btn" onClick={() => dispatch(newRequistFrinds(profile?._id))}>
+                  <button className="profile-update-btn" onClick={() => addRequist(profile?._id)}>
                   <i className="bi bi-file-person-fill"></i>
                    Add Freind
                   </button>
