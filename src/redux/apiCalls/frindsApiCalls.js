@@ -29,12 +29,12 @@ export function newRequistFrinds(id) {
                 headers: {
                     Authorization: "Bearer " + getState().auth.user.token,
                 }
-            });
+            })
 
-            dispatch(authActions.sendReq(data));
+           await dispatch(authActions.sendReq(data))
 
         } catch (error) {
-          toast.error(error.response.data.message);
+          toast.error(error.response.data.message)
         }
 
     }

@@ -34,9 +34,9 @@ const Profile = () => {
     const { id } =  useParams();
 
     
-    const isRequist = user?.requestFrinds?.find((user) => user === profile?._id)
-    const isUserSend = user?.sendRequist?.find((user) => user === profile?._id)
-    const isFrinds = user?.frinds?.find((user) => user === profile?._id)
+    const isRequist = user?.requestFrinds?.find((user) => user === id)
+    const isUserSend = user?.sendRequist?.find((user) => user === id)
+    const isFrinds = user?.frinds?.find((user) => user === id)
 
 
     useEffect(() => {
@@ -182,7 +182,7 @@ const Profile = () => {
                  </>
                  )}
                  {(!isRequist && !isUserSend && !isFrinds && user?._id !== profile?._id) ? (
-                  <button className="profile-update-btn" onClick={() => addRequist(profile?._id)}>
+                  <button className="profile-update-btn" onClick={() => addRequist(id)}>
                   <i className="bi bi-file-person-fill"></i>
                    Add Freind
                   </button>
