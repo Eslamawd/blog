@@ -161,17 +161,17 @@ const Profile = () => {
                <div>
             {isRequist &&
                 <>
-                 <button className="profile-update-btn" onClick={addFrind()}>
+                 <button className="profile-update-btn" onClick={() => addFrind()}>
                  <i className="bi bi-file-person-fill"></i>
                  Accept
                  </button>
-                 <button className="profile-update-btn" onClick={deleteReq()}>
+                 <button className="profile-update-btn" onClick={() =>  deleteReq()}>
                  <i className="bi bi-file-person-fill"></i>
                  Cancel
                  </button>
                  </>}
                {isUserSend && (
-                 <button className="profile-update-btn" onClick={deleteSends()}>
+                 <button className="profile-update-btn" onClick={() =>  deleteSends()}>
                  <i className="bi bi-file-person-fill"></i>
                  Cancel
                  </button>
@@ -182,14 +182,14 @@ const Profile = () => {
                  <i className="bi bi-file-person-fill"></i>
                  Message
                  </button>
-                 <button className="profile-update-btn" onClick={deleteFrinds()}>
+                 <button className="profile-update-btn" onClick={() => deleteFrinds()}>
                  <i className="bi bi-file-person-fill"></i>
                  Cancel frinds
                  </button>
                  </>
                  )}
                  {(!isRequist && !isUserSend && !isFrinds && user?._id !== profile?._id) ? (
-                  <button className="profile-update-btn" onClick={addRequist()}>
+                  <button className="profile-update-btn" onClick={() => addRequist()}>
                   <i className="bi bi-file-person-fill"></i>
                    Add Freind
                   </button>
