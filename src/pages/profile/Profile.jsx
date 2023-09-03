@@ -161,8 +161,7 @@ const Profile = () => {
                  Update Profile
                  </button>
                )}
-            </div>
-            <div>
+               <div>
             {isRequist &&
                 <>
                  <button className="profile-update-btn" onClick={addFrind()}>
@@ -201,6 +200,8 @@ const Profile = () => {
                   null
                  }
             </div>
+            </div>
+            
             <div className="profile-posts-list">
                 <h2 className="profile-list-title"> {profile?.username}Posts</h2>
                {
