@@ -8,7 +8,7 @@ import { toast } from "react-toastify";
 export function getRequistFrinds() {
     return async (dispatch, getState) => {
         try {
-            const { data } = await request.get(`/api/users/requist`, {
+            const { data } = await request.get(`/api/frind/requi`, {
                 headers: {
                     Authorization: "Bearer " + getState().auth.user.token,
                 }
@@ -25,7 +25,7 @@ export function getRequistFrinds() {
 export function newRequistFrinds(id) {
     return async (dispatch, getState) => {
         try {
-            const { data } = await request.put(`/api/users/requist/${id}`, {
+            const { data } = await request.put(`/api/frind/requi/${id}`, {
                 headers: {
                     Authorization: "Bearer " + getState().auth.user.token,
                 }
@@ -45,7 +45,7 @@ export function newRequistFrinds(id) {
 export function getAllFrinds() {
     return async (dispatch, getState) => {
         try {
-            const { data } = await request.get(`/api/users/frinds`, {
+            const { data } = await request.get(`/api/frind/frinds`, {
                 headers: {
                     Authorization: "Bearer " + getState().auth.user.token,
                 }
@@ -64,7 +64,7 @@ export function getAllFrinds() {
 export function deleteRequist(id) {
     return async (dispatch, getState) => {
         try {
-            const { data } = await request.delete(`/api/users/frinds/${id}`, {
+            const { data } = await request.delete(`/api/frind/frinds/${id}`, {
                 headers: {
                     Authorization: "Bearer " + getState().auth.user.token,
                 }
@@ -84,7 +84,7 @@ export function deleteRequist(id) {
 export function frindOkRequist(id) {
     return async (dispatch, getState) => {
         try {
-            const { data } = await request.put(`/api/users/frinds/${id}`, {
+            const { data } = await request.put(`/api/frind/frinds/${id}`, {
                 headers: {
                     Authorization: "Bearer " + getState().auth.user.token,
                 }
@@ -104,7 +104,7 @@ export function frindOkRequist(id) {
 export function deleteOneRequist(id) {
     return async (dispatch, getState) => {
         try {
-            const { data } = await request.delete(`/api/users/frinds/${id}`,  {
+            const { data } = await request.delete(`/api/frind/frinds/${id}`,  {
                 headers: {
                     Authorization: "Bearer " + getState().auth.user.token,
                 }
@@ -121,7 +121,7 @@ export function deleteOneRequist(id) {
 export function deleteSend(id) {
     return async (dispatch, getState) => {
         try {
-            const { data } = await request.delete(`/api/users/frinds/${id}`,  {
+            const { data } = await request.delete(`/api/frind/frinds/${id}`,  {
                 headers: {
                     Authorization: "Bearer " + getState().auth.user.token,
                 }
@@ -140,7 +140,7 @@ export function deleteSend(id) {
 export function deleteOneFrinds(id) {
     return async (dispatch, getState) => {
         try {
-            const { data } = await request.delete(`/api/users/frinds/${id}`,  {
+            const { data } = await request.delete(`/api/frind/frinds/${id}`,  {
                 headers: {
                     Authorization: "Bearer " + getState().auth.user.token,
                 }
@@ -158,7 +158,7 @@ export function deleteOneFrinds(id) {
 export function deleteFrinds(id) {
     return async (dispatch, getState) => {
         try {
-            const { data } = await request.delete(`/api/users/frinds/${id}`,  {
+            const { data } = await request.delete(`/api/frind/frinds/${id}`,  {
                 headers: {
                     Authorization: "Bearer " + getState().auth.user.token,
                 }
