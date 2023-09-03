@@ -72,28 +72,25 @@ const Profile = () => {
 
           //frinds in profile 
 
-          const addRequist = (e) => {
-            e.preventDefault();
+          const addRequist = () => {
             dispatch(newRequistFrinds(profile?._id));
           }
 
-          const deleteSends = (e) => {
-            e.preventDefault();
+          const deleteSends = () => {
             dispatch(deleteSend(profile?._id));
           }
 
-          const deleteReq = (e) => {
-            e.preventDefault();
+          const deleteReq = () => {
             dispatch(deleteOneRequist(profile?._id));
           }
 
-          const addFrind = (e) => {
-            e.preventDefault();
+          const addFrind = () => {
+          
             dispatch(frindOkRequist(profile?._id));
           }
 
-          const deleteFrinds = (e) =>{ 
-            e.preventDefault();
+          const deleteFrinds = () => { 
+        
             dispatch(deleteOneFrinds(profile?._id));
           }
 
