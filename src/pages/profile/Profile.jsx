@@ -92,7 +92,7 @@ const Profile = () => {
             dispatch(frindOkRequist(profile?._id));
           }
 
-          const deleteOneFrinds = (e) =>{ 
+          const deleteFrinds = (e) =>{ 
             e.preventDefault();
             dispatch(deleteOneFrinds(profile?._id));
           }
@@ -186,7 +186,7 @@ const Profile = () => {
                  <i className="bi bi-file-person-fill"></i>
                  Message
                  </button>
-                 <button className="profile-update-btn" onClick={deleteOneFrinds()}>
+                 <button className="profile-update-btn" onClick={deleteFrinds()}>
                  <i className="bi bi-file-person-fill"></i>
                  Cancel frinds
                  </button>
