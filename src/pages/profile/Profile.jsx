@@ -182,7 +182,7 @@ const Profile = () => {
                  </>
                  )}
                  {(!isRequist && !isUserSend && !isFrinds && user?._id !== profile?._id) ? (
-                  <button className="profile-update-btn" onClick={() => addRequist(id)}>
+                  <button className="profile-update-btn" onClick={addRequist(profile?._id)}>
                   <i className="bi bi-file-person-fill"></i>
                    Add Freind
                   </button>
