@@ -31,7 +31,7 @@ export function newRequistFrinds(id) {
                 }
             });
 
-           dispatch(authActions.sendReq(data));
+           await dispatch(profileActions.setRequistProfile(data));
 
         } catch (error) {
           toast.error(error.response.data.message);

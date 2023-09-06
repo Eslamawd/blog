@@ -31,7 +31,7 @@ const authSlice = createSlice({
                 state.registerMessage = null;
             },
             sendReq(state, action) {
-                state.user.sendRequist = action.payload
+                state.user.sendRequist = action.payload.sendRequist
             },
             setFrinds(state, action) {
                 state.user.frinds = action.payload

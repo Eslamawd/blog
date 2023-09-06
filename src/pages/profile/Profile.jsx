@@ -34,10 +34,10 @@ const Profile = () => {
     const { id } =  useParams();
 
     
-    const isRequist = user?.requestFrinds?.find((user) => user === id)
-    const isUserSend = user?.sendRequist?.find((user) => user === id)
-    const isFrinds = user?.frinds?.find((user) => user === id)
-
+    const isUserSend = profile?.requestFrinds?.find((userReq) => userReq === user?._id)
+    const isRequist = profile?.sendRequist?.find((userSen) => userSen === user?._id)
+    const isFrinds = profile?.frinds?.find((userFren) => userFren === user?._id)
+    
 
     useEffect(() => {
         dispatch(getUserProfile(id))
