@@ -64,7 +64,7 @@ export function getAllFrinds() {
 export function deleteRequist(id) {
     return async (dispatch, getState) => {
         try {
-            const { data } = await request.delete(`/api/frind/frinds/${id}`, {
+            const { data } = await request.delete(`/api/frind/frinds/${id}`, {}, {
                 headers: {
                     Authorization: "Bearer " + getState().auth.user.token,
                 }
@@ -104,7 +104,7 @@ export function frindOkRequist(id) {
 export function deleteOneRequist(id) {
     return async (dispatch, getState) => {
         try {
-            const { data } = await request.delete(`/api/frind/frinds/${id}`,  {
+            const { data } = await request.delete(`/api/frind/frinds/${id}`, {},  {
                 headers: {
                     Authorization: "Bearer " + getState().auth.user.token,
                 }
@@ -121,12 +121,12 @@ export function deleteOneRequist(id) {
 export function deleteSend(id) {
     return async (dispatch, getState) => {
         try {
-            const { data } = await request.delete(`/api/frind/frinds/${id}`,  {
+            const { data } = await request.delete(`/api/frind/frinds/${id}`, {},  {
                 headers: {
                     Authorization: "Bearer " + getState().auth.user.token,
                 }
             });
-            dispatch(authActions.clearSendReq(data));
+            dispatch(profileActions.setRequistProfile(data));
 
         } catch (error) {
           toast.error(error.response.data.message);
