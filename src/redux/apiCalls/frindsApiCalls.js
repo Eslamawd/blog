@@ -25,7 +25,7 @@ export function getRequistFrinds() {
 export function newRequistFrinds(id) {
     return async (dispatch, getState) => {
         try {
-            const { data } = await request.put(`/api/frind/requi/${id}`, {
+            const { data } = await request.put(`/api/frind/requi/${id}`, {},  {
                 headers: {
                     Authorization: "Bearer " + getState().auth.user.token,
                 }

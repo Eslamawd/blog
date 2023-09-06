@@ -5,7 +5,7 @@ import { toast } from "react-toastify";
 import  swal  from "sweetalert";
 import UpdateProfile from "./UpdateProfile";
 import { useDispatch, useSelector } from "react-redux";
-import { deleteProfile, getUserProfile, uploadProfilePhoto } from "../../redux/apiCalls/profileApiCall"
+import { deleteProfile, getUserProfile, uploadProfilePhoto } from "../../redux/apiCalls/profileApiCall";
 import { logoutUser } from "../../redux/apiCalls/authApiCalls";
 import { useParams, useNavigate } from "react-router-dom";
 import { MutatingDots } from "react-loader-spinner";
@@ -72,8 +72,8 @@ const Profile = () => {
 
           //frinds in profile 
 
-          const addRequist = () => {
-            dispatch(newRequistFrinds(profile?._id));
+          const addRequist = (id) => {
+            dispatch(newRequistFrinds(id));
           }
 
           const deleteSends = () => {
@@ -189,7 +189,7 @@ const Profile = () => {
                  </>
                  )}
                  {(!isRequist && !isUserSend && !isFrinds && user?._id !== profile?._id) ? (
-                  <button className="profile-update-btn" onClick={() => addRequist()}>
+                  <button className="profile-update-btn" onClick={() => addRequist(profile?._id)}>
                   <i className="bi bi-file-person-fill"></i>
                    Add Freind
                   </button>
