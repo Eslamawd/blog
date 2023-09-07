@@ -84,13 +84,13 @@ export function deleteRequist(id) {
 export function frindOkRequist(id) {
     return async (dispatch, getState) => {
         try {
-            const { data } = await request.put(`/api/frind/frinds/${id}`, {
+            const { data } = await request.put(`/api/frind/frinds/${id}`, {}, {
                 headers: {
                     Authorization: "Bearer " + getState().auth.user.token,
                 }
             });
           await dispatch(profileActions.setFrinds(data))
-          await dispatch(authActions.setFrinds(data))
+          await dispatch(profileActions.setFrindsProfile(data))
 
         } catch (error) {
           toast.error(error.response.data.message);
@@ -145,7 +145,7 @@ export function deleteOneFrinds(id) {
                     Authorization: "Bearer " + getState().auth.user.token,
                 }
             });
-            dispatch(authActions.setFrinds(data));
+            dispatch(profileActions.setFrindsProfile(data));
 
         } catch (error) {
           toast.error(error.response.data.message);

@@ -46,10 +46,16 @@ const profileSlice = createSlice({
             state.requist = action.payload
         },
         setFrinds(state, action) {
-            state.frinds = action.payload
+            const requi = state.requist.find((c) => c.toString() === action.payload._id);
+            const reqIndex = state.requist.indexOf(requi);
+
+            state.requist.splice(reqIndex, 1);
         },
         deleteRequist(state, action) {
-          state.requist = action.payload
+            const requi = state.requist.find((c) => c.toString() === action.payload._id);
+            const reqIndex = state.requist.indexOf(requi);
+
+            state.requist.splice(reqIndex, 1);
         }
         ,
         deleteFrinds(state, action) {
