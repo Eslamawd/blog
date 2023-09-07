@@ -121,7 +121,7 @@ export function deleteOneRequist(id) {
 export function deleteSend(id) {
     return async (dispatch, getState) => {
         try {
-            const { data } = await request.delete(`/api/frind/frinds/${id}`, {},  {
+            const { data } = await request.delete(`/api/frind/frinds/${id}`, {
                 headers: {
                     Authorization: "Bearer " + getState().auth.user.token,
                 }
