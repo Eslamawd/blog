@@ -80,9 +80,7 @@ const Profile = ({ socket }) => {
 
           const addRequist = (id) => {
             dispatch(newRequistFrinds(id));
-            socket.on('connect', () => {
               socket.on('sendFrindRequist', data)
-            });
           }
 
           const deleteSends = (id) => {

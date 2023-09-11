@@ -39,21 +39,16 @@ if (process.env.NODE_ENV === 'production') disableReactDevTools()
 function App() {
 
   const { user } = useSelector(state => state.auth);
-  const  { newFrindRequist }  = socket.on('newFrindRequist', (data) => {
-    return data;
-  })
   
   useEffect(() => {
     socket.on('connect', () => {
       let id = user._id
       socket.emit('roomNotfications', id)
-      socket.on('newFrindRequist', (data) => {
-       console.log(data)
-      })
     })
   })
-
-  console.log(newFrindRequist)
+  socket.on('newFrindRequist', (data) => {
+    console.log(data)
+   })
 
  
 
