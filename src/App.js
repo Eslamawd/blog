@@ -28,7 +28,7 @@ import { useSelector } from "react-redux";
 import { disableReactDevTools } from "@fvilers/disable-react-devtools";
 import LayOut from "./pages/out-let/LayOut";
 import Frinds from "./pages/frinds/Frinds";
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 
 
 const socket = io('https://blog-api-61qi.onrender.com')
@@ -42,18 +42,14 @@ function App() {
   
   useEffect(() => {
     socket.on('connect', () => {
-      let id = user._id
+      let id = user?._id
       socket.emit('roomNotfications', id)
     })
-  })
-  
-  useEffect(() => {
-    socket.on('newFrindRequist', (data) => {
+    socket.on('newFrindRequist', data => {
       console.log(data)
      })
+  },[user])
   
-  })
- 
 
   
 

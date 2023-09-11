@@ -78,9 +78,9 @@ const Profile = ({ socket }) => {
 
           //frinds in profile 
 
-          const addRequist = (id) => {
+          const addRequist = (id, data) => {
             dispatch(newRequistFrinds(id));
-              socket.on('sendFrindRequist', data)
+           socket.on('sendFrindRequist', data);
           }
 
           const deleteSends = (id) => {
@@ -196,7 +196,7 @@ const Profile = ({ socket }) => {
                  </>
                  )}
                  {(!isRequist && !isUserSend && !isFrinds && user?._id !== profile?._id) ? (
-                  <button className="profile-update-btn" onClick={() => addRequist(profile?._id)}>
+                  <button className="profile-update-btn" onClick={() => addRequist(profile?._id, data)}>
                   <i className="bi bi-file-person-fill"></i>
                    Add Freind
                   </button>
