@@ -28,7 +28,7 @@ import { useSelector } from "react-redux";
 import { disableReactDevTools } from "@fvilers/disable-react-devtools";
 import LayOut from "./pages/out-let/LayOut";
 import Frinds from "./pages/frinds/Frinds";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 
 
 const socket = io('https://blog-api-61qi.onrender.com')
@@ -38,14 +38,30 @@ if (process.env.NODE_ENV === 'production') disableReactDevTools()
 
 function App() {
 
+  const { user } = useSelector(state => state.auth);
+  const  { newFrindRequist }  = socket.on('newFrindRequist', (data) => {
+    return data;
+  })
+  
   useEffect(() => {
     socket.on('connect', () => {
-      console.log('connect')
+      let id = user._id
+      socket.emit('roomNotfications', id)
+      socket.on('newFrindRequist', (data) => {
+       console.log(data)
+      })
     })
   })
 
+  console.log(newFrindRequist)
 
-    const { user } = useSelector(state => state.auth);
+ 
+
+  
+
+
+
+
 
   return (
     <BrowserRouter>
@@ -71,7 +87,7 @@ function App() {
       <Route path="forget-password" element={< ForgetPassword />} /> 
       <Route path="reset-password/:userId/:token/:a" element={< ResetPassword />} /> 
 
-      <Route path="profile/:id" element={ <Profile /> }/>
+      <Route path="profile/:id" element={ <Profile socket={socket} /> }/>
       <Route path="frinds" element={ <Frinds /> }/>
       
       

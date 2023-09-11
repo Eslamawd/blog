@@ -12,7 +12,7 @@ import { MutatingDots } from "react-loader-spinner";
 import { deleteOneFrinds, deleteOneRequist, deleteSend, frindOkRequist, newRequistFrinds } from "../../redux/apiCalls/frindsApiCalls";
 
 
-const Profile = () => {
+const Profile = ({ socket }) => {
 
     const dispatch = useDispatch();
     const { profile, loading, isProfileDeleted } = useSelector(state => state.profile);
@@ -52,6 +52,12 @@ const Profile = () => {
       }, [navigate, isProfileDeleted]);
 
 
+      const data = {
+        userId: profile?._id,
+        id: user?._id,
+        username: user?.username,
+        profilePhoto: user?.profilePhoto
+      }
 
          // delete post Hundler 
         const deleteProfileHundler = () => {
@@ -74,6 +80,9 @@ const Profile = () => {
 
           const addRequist = (id) => {
             dispatch(newRequistFrinds(id));
+            socket.on('connect', () => {
+              socket.on('sendFrindRequist', data)
+            });
           }
 
           const deleteSends = (id) => {
