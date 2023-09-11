@@ -46,10 +46,13 @@ function App() {
       socket.emit('roomNotfications', id)
     })
   })
-  socket.on('newFrindRequist', (data) => {
-    console.log(data)
-   })
-
+  
+  useEffect(() => {
+    socket.on('newFrindRequist', (data) => {
+      console.log(data)
+     })
+  
+  })
  
 
   
