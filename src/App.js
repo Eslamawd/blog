@@ -54,8 +54,11 @@ function App() {
        socket.disconnect()
      }
   },[user])
+  console.log(requistFrind)
 
-  toast.success(`${requistFrind.username} Send A New Requist Frends`)
+  requistFrind.map(user => 
+  toast.success(`${user.username} Send A New Requist Frends`)
+  )
   
 
   
