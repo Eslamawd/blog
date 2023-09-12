@@ -10,9 +10,9 @@ import { logoutUser } from "../../redux/apiCalls/authApiCalls";
 import { useParams, useNavigate } from "react-router-dom";
 import { MutatingDots } from "react-loader-spinner";
 import { deleteOneFrinds, deleteOneRequist, deleteSend, frindOkRequist, newRequistFrinds } from "../../redux/apiCalls/frindsApiCalls";
+import io from 'socket.io-client';
 
-
-const Profile = ({ socket }) => {
+const Profile = () => {
 
     const dispatch = useDispatch();
     const { profile, loading, isProfileDeleted } = useSelector(state => state.profile);
@@ -77,10 +77,13 @@ const Profile = ({ socket }) => {
           };
 
           //frinds in profile 
+          
+const socket = io('https://blog-api-61qi.onrender.com')
+
 
           const addRequist = (id, data) => {
             dispatch(newRequistFrinds(id));
-           socket.on('sendFrindRequist', data);
+           socket.emit('sendFrindRequist', data);
           }
 
           const deleteSends = (id) => {

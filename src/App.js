@@ -1,5 +1,5 @@
 import { BrowserRouter, Routes, Route, Navigate} from "react-router-dom";
-import { ToastContainer } from "react-toastify";
+import { ToastContainer, toast } from "react-toastify";
 import io from 'socket.io-client';
 
 
@@ -28,7 +28,7 @@ import { useSelector } from "react-redux";
 import { disableReactDevTools } from "@fvilers/disable-react-devtools";
 import LayOut from "./pages/out-let/LayOut";
 import Frinds from "./pages/frinds/Frinds";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 
 
 const socket = io('https://blog-api-61qi.onrender.com')
@@ -39,16 +39,23 @@ if (process.env.NODE_ENV === 'production') disableReactDevTools()
 function App() {
 
   const { user } = useSelector(state => state.auth);
+  const [requistFrind, setRequistFrind ] = useState([])
   
   useEffect(() => {
     socket.on('connect', () => {
-      let id = user?._id
+      const id = user?._id
       socket.emit('roomNotfications', id)
     })
     socket.on('newFrindRequist', data => {
-      console.log(data)
+      setRequistFrind((requist) => [...requist, data])
      })
+
+     return () => {
+       socket.disconnect()
+     }
   },[user])
+
+  toast.success(`${requistFrind.username} Send A New Requist Frends`)
   
 
   
@@ -81,7 +88,7 @@ function App() {
       <Route path="forget-password" element={< ForgetPassword />} /> 
       <Route path="reset-password/:userId/:token/:a" element={< ResetPassword />} /> 
 
-      <Route path="profile/:id" element={ <Profile socket={socket} /> }/>
+      <Route path="profile/:id" element={ <Profile /> }/>
       <Route path="frinds" element={ <Frinds /> }/>
       
       

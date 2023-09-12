@@ -9,7 +9,7 @@ const AddCategory = () => {
 
     const [title, setTitle] = useState("")
 
-    // form submit hundler
+    // form submit hundle
 
     const formSubmitHundler = (e) => {
         e.preventDefault()
