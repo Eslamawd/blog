@@ -29,6 +29,8 @@ import { disableReactDevTools } from "@fvilers/disable-react-devtools";
 import LayOut from "./pages/out-let/LayOut";
 import Frinds from "./pages/frinds/Frinds";
 import { useEffect, useState } from "react";
+import Message from "./pages/frinds/Message";
+import Chats from "./pages/frinds/Chats";
 
 
 const socket = io('https://blog-api-61qi.onrender.com')
@@ -40,20 +42,27 @@ function App() {
 
   const { user } = useSelector(state => state.auth);
   const [requistFrind, setRequistFrind ] = useState([])
+  const [onlineFrinds, setOnlineFrinds ] = useState([])
+
   
   useEffect(() => {
     socket.on('connect', () => {
       const id = user?._id
       socket.emit('roomNotfications', id)
+      socket.emit('goOnline', id)
     })
     socket.on('newFrindRequist', data => {
-      setRequistFrind((requist) => [...requist, data])
+      setRequistFrind((requist) => [ ...requist, data ])
      })
+    socket.on('onlineFrinds', frinds => {
+      setOnlineFrinds((online => [ ...online, frinds ]))
+
+    })
 
      return () => {
        socket.disconnect()
      }
-  },[user])
+  },[])
   console.log(requistFrind)
 
   requistFrind.map(user => 
@@ -83,7 +92,7 @@ function App() {
              />
 
      <Routes>
-     <Route path="/" element={ <LayOut /> }>
+     <Route path="/" element={ <LayOut requistFrind={requistFrind} /> }>
       <Route index element={ < Home /> }/>
       <Route path="login" element={!user ? < Login /> : <Navigate to="/" />} />
       <Route path="signup" element={!user ? < SignUp /> : <Navigate to="/" />} />
@@ -93,6 +102,8 @@ function App() {
 
       <Route path="profile/:id" element={ <Profile /> }/>
       <Route path="frinds" element={ <Frinds /> }/>
+      <Route path="message/:id" element={ <Message /> }/>
+      <Route path="chat" element={ <Chats /> }/>
       
       
       <Route path="posts">

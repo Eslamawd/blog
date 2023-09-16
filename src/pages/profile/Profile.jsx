@@ -7,7 +7,7 @@ import UpdateProfile from "./UpdateProfile";
 import { useDispatch, useSelector } from "react-redux";
 import { deleteProfile, getUserProfile, uploadProfilePhoto } from "../../redux/apiCalls/profileApiCall";
 import { logoutUser } from "../../redux/apiCalls/authApiCalls";
-import { useParams, useNavigate } from "react-router-dom";
+import { useParams, useNavigate, Link } from "react-router-dom";
 import { MutatingDots } from "react-loader-spinner";
 import { deleteOneFrinds, deleteOneRequist, deleteSend, frindOkRequist, newRequistFrinds } from "../../redux/apiCalls/frindsApiCalls";
 import io from 'socket.io-client';
@@ -104,6 +104,8 @@ const socket = io('https://blog-api-61qi.onrender.com')
             dispatch(deleteOneFrinds(profile?._id));
           }
 
+          
+
           if (loading) {
             return(
               <div className="profile-loader">
@@ -188,13 +190,14 @@ const socket = io('https://blog-api-61qi.onrender.com')
                  )}
                {isFrinds && (
                 <>
-                 <button className="profile-update-btn" onClick={() => setUpdateProfile(true)}>
-                 <i className="bi bi-file-person-fill"></i>
+                 <button className="profile-update-btn">
+                 <Link to={`message/${profile._id}`}>
                  Message
+                 </Link>
                  </button>
                  <button className="profile-update-btn" onClick={() => deleteFrinds()}>
                  <i className="bi bi-file-person-fill"></i>
-                 Cancel frinds
+                 Un frind
                  </button>
                  </>
                  )}

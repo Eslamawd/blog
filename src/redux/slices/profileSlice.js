@@ -46,26 +46,37 @@ const profileSlice = createSlice({
             state.requist = action.payload
         },
         setFrinds(state, action) {
-            const requi = state.requist.find((c) => c.toString() === action.payload._id);
+            const requi = state.requist.find((c) => c._id.toString() === action.payload._id);
             const reqIndex = state.requist.indexOf(requi);
 
             state.requist.splice(reqIndex, 1);
         },
+        setNewFrinds(state, action) {
+         state.frinds = action.payload
+        },
         deleteRequist(state, action) {
-            const requi = state.requist.find((c) => c.toString() === action.payload._id);
+            const requi = state.requist.find((c) => c._id.toString() === action.payload._id);
             const reqIndex = state.requist.indexOf(requi);
 
             state.requist.splice(reqIndex, 1);
         }
         ,
         deleteFrinds(state, action) {
-            state.frinds = action.payload
+            const requi = state.frinds.find((c) => c._id.toString() === action.payload._id);
+            const reqIndex = state.frinds.indexOf(requi);
+
+            state.frinds.splice(reqIndex, 1);
         },
+
 
 
         setRequistProfile(state, action) {
             
           state.profile.requestFrinds = action.payload.requestFrinds
+        },
+
+        setSendProfile(state, action) {
+            state.profile.sendRequist = action.payload.sendRequist
         },
 
         setFrindsProfile(state, action) {

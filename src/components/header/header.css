@@ -135,6 +135,15 @@
         margin-bottom: 16px;
     }
 
+    .nav-link span {
+        content: '';
+        display: block;
+        border-radius: 50%;
+        width: 3px;
+        height: 3px;
+        border: 1px solid red;
+        box-shadow: inset;
+    }
 }
 
 @media (max-width: 520px) {

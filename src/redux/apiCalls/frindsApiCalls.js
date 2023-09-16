@@ -1,5 +1,4 @@
 import { profileActions } from "../slices/profileSlice";
-import { authActions } from "../slices/authSlice";
 import request from "../../utils/request";
 import { toast } from "react-toastify";
 
@@ -51,7 +50,7 @@ export function getAllFrinds() {
                 }
             });
 
-            dispatch(profileActions.setFrinds(data));
+            dispatch(profileActions.setNewFrinds(data));
 
         } catch (error) {
           toast.error(error.response.data.message);
@@ -104,12 +103,12 @@ export function frindOkRequist(id) {
 export function deleteOneRequist(id) {
     return async (dispatch, getState) => {
         try {
-            const { data } = await request.delete(`/api/frind/frinds/${id}`, {},  {
+            const { data } = await request.delete(`/api/frind/frinds/${id}`, {
                 headers: {
                     Authorization: "Bearer " + getState().auth.user.token,
                 }
             });
-            dispatch(authActions.clearReq(data));
+            dispatch(profileActions.setSendProfile(data));
 
         } catch (error) {
           toast.error(error.response.data.message);

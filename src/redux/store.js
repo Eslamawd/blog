@@ -5,6 +5,7 @@ import { postReducer } from "./slices/postSlice";
 import { categoryReducer } from "./slices/categorySlice";
 import { commentReducer } from "./slices/commentSlice";
 import { passwordReducer } from "./slices/passwordSlice";
+import { messageReducer } from "./slices/MessageSlice";
 
 
 
@@ -16,6 +17,7 @@ const store = configureStore({
         category: categoryReducer,
         comment: commentReducer,
         password: passwordReducer,
+        message: messageReducer
     },
     devTools: false,
 });

@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import { useSelector } from "react-redux";
 
-const Navbar = ({ toggle, setToggle }) => {
+const Navbar = ({ toggle, setToggle, requistFrind }) => {
 
     
 
@@ -23,7 +23,9 @@ const Navbar = ({ toggle, setToggle }) => {
                     </Link>
                     
                     <Link to="/frinds" onClick={() => setToggle(false)} className="nav-link">
-                    <i class="bi bi-plus-square-fill"></i> Requist
+                       
+                    <i class="bi bi-plus-square-fill"></i> Requist 
+                    { requistFrind && (<span>{requistFrind?.length}</span> )}
                     </Link>
                     </>
 

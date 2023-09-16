@@ -4,13 +4,13 @@ import HeaderLeft from "./HeaderLeft";
 import Navbar from "./Navbar";
 import HeaderRight from "./HeaderRight";
 
-const Header = () => {
+const Header = ({ requistFrind }) => {
 
   const [toggle, setToggle] =  useState(false)
     return (
         <header className="header">
            <HeaderLeft toggle={toggle} setToggle={setToggle} />
-           <Navbar toggle={toggle} setToggle={setToggle}/>
+           <Navbar requistFrind={requistFrind} toggle={toggle} setToggle={setToggle}/>
            <HeaderRight />
         </header>
     );

@@ -2,10 +2,10 @@ import React from 'react';
 import { Outlet } from 'react-router-dom';
 import Header from '../../components/header/Header';
 
-const LayOut = () => {
+const LayOut = ({ requistFrind }) => {
     return (
         <div>
-            <Header />
+            <Header requistFrind={requistFrind} />
          
             <Outlet />
             
