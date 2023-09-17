@@ -64,6 +64,7 @@ function App() {
      }
   },[])
   console.log(requistFrind)
+  console.log(onlineFrinds)
 
   requistFrind.map(user => 
   toast.success(`${user.username} Send A New Requist Frends`)

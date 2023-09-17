@@ -1,23 +1,20 @@
 import { useEffect, useState } from 'react';
 import io from 'socket.io-client';
 import { useSelector, useDispatch } from "react-redux";
-import { useNavigate , useParams } from "react-router-dom";
+import {  useParams } from "react-router-dom";
 import { newMessageOn } from '../../redux/apiCalls/messageApiCall';
 
 const Message = () => {
     
-    const socket = io('https://blog-api-61qi.onrender.com')
-    const dispatch = useDispatch()
-    const navigate = useNavigate()
-    const { id } = useParams()
-    const { user } = useSelector(state => state.auth)
-    const { message } = useSelector(state => state.message)
+
+
+    const dispatch = useDispatch();
+    const { id } = useParams();
+    const { user } = useSelector(state => state.auth);
+    const { message } = useSelector(state => state.message);
 
     const [messages, setMessages] = useState([])
 
-    const goToRequistProfile = (id) => {
-        navigate(`/profile/${id}`)
-    }
 
 
     console.log(message)
@@ -28,7 +25,7 @@ const Message = () => {
 
         dispatch(newMessageOn(id))
 
-     }, [dispatch])
+     }, [])
 
 
     return (
@@ -41,7 +38,7 @@ const Message = () => {
         
                                 <div className="table-image">
                                     <img 
-                                        src={user} 
+                                        src='' 
                                         alt=""
                                         className="table-user-image"
                                          
