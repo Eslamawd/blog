@@ -25,7 +25,7 @@ const Navbar = ({ toggle, setToggle, requistFrind }) => {
                     <Link to="/frinds" onClick={() => setToggle(false)} className="nav-link">
                        
                     <i class="bi bi-plus-square-fill"></i> Requist 
-                    { requistFrind && (<span>{requistFrind?.length}</span> )}
+                    { requistFrind?.length && (<span>{requistFrind?.length}</span> )}
                     </Link>
                     </>
 

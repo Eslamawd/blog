@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+import './message.css';
 import io from 'socket.io-client';
 import { useSelector, useDispatch } from "react-redux";
 import {  useParams } from "react-router-dom";
@@ -13,11 +14,12 @@ const Message = () => {
     const { user } = useSelector(state => state.auth);
     const { message } = useSelector(state => state.message);
 
-    const [messages, setMessages] = useState([])
+    const [messages, setMessages] = useState([]);
 
 
+    const frindData = message?.chat?.userInChat?.find(frind => frind.id !== user._id);
 
-    console.log(message)
+    console.log(frindData)
    
 
   
@@ -31,24 +33,30 @@ const Message = () => {
     return (
         
        <section className="message-continar">
-          
-            <h1 className="table-title">
+                    <div className="frind-data">
+                        <img 
+                            src={frindData?.profilePhoto?.url}
+                            alt=""
+                            className="table-user-image"
+                        />
+                        <h1 className="">
+                        {frindData?.username}
+                        </h1>
+                    </div>
+                  {}
+                    <div className="send-on-message">
+                      
+                              <input 
+                              type="text"
+                              className="send-message-input" 
+                              placeholder='UserName'
+                              onChange={(e) => setMessages(e.target.value)}
+                              />
 
-            </h1>
-        
-                                <div className="table-image">
-                                    <img 
-                                        src='' 
-                                        alt=""
-                                        className="table-user-image"
-                                         
-                                    />
-                                    <span className="table-username">
-                                        {}
-                                    </span>
-
-                </div>
-            
+                   
+                    <button className="send-message">
+                    </button>
+                    </div>
         </section>
     );
 };
