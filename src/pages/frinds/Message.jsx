@@ -24,55 +24,30 @@ const Message = ({ socket }) => {
     const frindData = message?.chat?.userInChat?.find(frind => frind.id !== user._id);
     
     
-    const messagesData = messageInChatAraay?.map((item) => (item?.sender.toString() === user?._id) ? (
-        
-                           <div className="me-message">
-                                 <img 
-                                    src={user?.profilePhoto?.url}
-                                    alt=""
-                                    className="table-user-image"
-                                />
-                                <span> {item.content}Lorem ipsum dolor sit amet consectetur adipisicing elit. Assumenda ut rem tempora quam dicta, sint odio adipisci neque veritatis ab unde minus alias atque, corporis autem saepe aperiam, vel inventore.</span>
-
-                         </div>
-                           
-                        ) : (
-                           
-                              <div className="frends-message">
-                                    <img 
-                                            src={frindData?.profilePhoto?.url}
-                                            alt=""
-                                            className="table-user-image"
-                                    />
-                                     <span>{item.content} Lorem ipsum dolor sit amet consectetur adipisicing elit. Assumenda ut rem tempora quam dicta, sint odio adipisci neque veritatis ab unde minus alias atque, corporis autem saepe aperiam, vel inventore.</span>
-                            </div>
-                           
-                        )
-                    )
-
+     
                     const data = {
                         chatId: message?.chat?._id,
                         sender: user._id,
                         content: newSend,
-                        frindId: frindData?._id
                     }
 
 
-                   const sendNewMessage = (data) =>  {
+                   const sendNewMessage = () =>  {
                      socket.emit('sendNewMessage', data)
                      setNewSend('')
                    }
  
 
     console.log(frindData)
-   useEffect(() => {
-       dispatch(newMessageOn(id))
 
-   }, [])
+       useEffect(() => {
+         dispatch(newMessageOn(id))
+
+             }, [])
 
   
       useEffect(() => {
-        const chatId = message?.chat?._id
+        let chatId = message?.chat?._id
         socket.emit('newConnectChat', chatId)
         socket.on('newMessage', data => {
                setMessages((messag) => [ ...messag, data])
@@ -94,7 +69,32 @@ const Message = ({ socket }) => {
                         </h1>
                     </div>
                   <div className="chat-message">
-                    {messagesData}
+                    {messageInChatAraay?.map((item) => (item?.sender === user?._id) ? (
+        
+        <div className="me-message">
+              <img 
+                 src={user?.profilePhoto?.url}
+                 alt=""
+                 className="table-user-image"
+             />
+             <span> {item.content}Lorem ipsum dolor sit amet consectetur adipisicing elit. Assumenda ut rem tempora quam dicta, sint odio adipisci neque veritatis ab unde minus alias atque, corporis autem saepe aperiam, vel inventore.</span>
+
+      </div>
+        
+     ) : (
+        
+           <div className="frends-message">
+                 <img 
+                         src={frindData?.profilePhoto?.url}
+                         alt=""
+                         className="table-user-image"
+                 />
+                  <span>{item.content} Lorem ipsum dolor sit amet consectetur adipisicing elit. Assumenda ut rem tempora quam dicta, sint odio adipisci neque veritatis ab unde minus alias atque, corporis autem saepe aperiam, vel inventore.</span>
+         </div>
+        
+     )
+ )
+}
                     { messages?.map((item) => (item.sender === user?._id) ? (
                             <div className="me-message">
                             <img 
@@ -128,7 +128,7 @@ const Message = ({ socket }) => {
                               />
 
                    
-                    <button className="send-message" onClick={() => sendNewMessage(data)}>
+                    <button className="send-message" onClick={() => sendNewMessage()}>
                         Send
                     </button>
                     </div>
