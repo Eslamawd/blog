@@ -55,7 +55,7 @@ function App() {
       setRequistFrind((requist) => [ ...requist, data ])
      })
     socket.on('onlineFrinds', frinds => {
-      setOnlineFrinds((online => [ ...online, frinds ]))
+      setOnlineFrinds((online) => [ ...online, frinds ])
 
     })
 
