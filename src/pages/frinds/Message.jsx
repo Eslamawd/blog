@@ -1,15 +1,12 @@
 import { useEffect, useState } from 'react';
 import './message.css';
-import io from 'socket.io-client';
 import { useSelector, useDispatch } from "react-redux";
 import {  useParams } from "react-router-dom";
 import { newMessageOn } from '../../redux/apiCalls/messageApiCall';
 
-const Message = () => {
+const Message = ({ socket }) => {
     
         
-
-    const socket = io('https://blog-api-61qi.onrender.com')
 
     const dispatch = useDispatch();
     const { id } = useParams();
@@ -17,7 +14,7 @@ const Message = () => {
     const { message } = useSelector(state => state.message);
 
     const [messages, setMessages] = useState([]);
-    const [newSend, setNewSend] = useState([]);
+    const [newSend, setNewSend] = useState('');
     
     
 
@@ -98,7 +95,7 @@ const Message = () => {
                     </div>
                   <div className="chat-message">
                     {messagesData}
-                    { messages?.map((item) => (item.sender === user._id) ? (
+                    { messages?.map((item) => (item.sender === user?._id) ? (
                             <div className="me-message">
                             <img 
                                src={user?.profilePhoto?.url}

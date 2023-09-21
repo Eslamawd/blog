@@ -103,7 +103,7 @@ function App() {
 
       <Route path="profile/:id" element={ <Profile /> }/>
       <Route path="frinds" element={ <Frinds /> }/>
-      <Route path="message/:id" element={ <Message /> }/>
+      <Route path="message/:id" element={ <Message socket={socket} /> }/>
       <Route path="chat" element={ <Chats /> }/>
       
       
