@@ -9,7 +9,7 @@ const Message = () => {
     
         
 
-const socket = io('https://blog-api-61qi.onrender.com')
+    const socket = io('https://blog-api-61qi.onrender.com')
 
     const dispatch = useDispatch();
     const { id } = useParams();
@@ -21,13 +21,13 @@ const socket = io('https://blog-api-61qi.onrender.com')
     
     
 
-    let messageInChatAraay = message.message;
+    const messageInChatAraay = message?.message;
     
     
     const frindData = message?.chat?.userInChat?.find(frind => frind.id !== user._id);
     
     
-    const messagesData = () => messageInChatAraay.map((item) => (item?.sender.toString() === user?._id) ? (
+    const messagesData = messageInChatAraay?.map((item) => (item?.sender.toString() === user?._id) ? (
         
                            <div className="me-message">
                                  <img 
@@ -57,12 +57,13 @@ const socket = io('https://blog-api-61qi.onrender.com')
                         chatId: message?.chat?._id,
                         sender: user._id,
                         content: newSend,
+                        frindId: frindData._id
                     }
 
 
                    const sendNewMessage = (data) =>  {
-                    socket.emit('sendNewMessage' , data)
-                    setNewSend('')
+                     socket.emit('sendNewMessage' , data)
+                     setNewSend('')
                    }
  
 
@@ -73,22 +74,16 @@ const socket = io('https://blog-api-61qi.onrender.com')
       useEffect(() => {
 
         dispatch(newMessageOn(id))
-
-     }, [])
-
-     useEffect(() => {
-         socket.on('connect', () => {
-             const chatId = message?.chat?._id
-             socket.emit('newConnectChat', chatId)
-             socket.on('newMessage', data => {
-                    setMessages((messag) => [ ...messag, data])
-             })
-           })
- 
-          return () => {
+        const chatId = message?.chat?._id
+        socket.emit('newConnectChat', chatId)
+        socket.on('newMessage', data => {
+               setMessages((messag) => [ ...messag, data])
+        })
+        return () => {
             socket.disconnect()
           }
-       },[])
+
+     }, [])
 
     return (
         
@@ -105,8 +100,7 @@ const socket = io('https://blog-api-61qi.onrender.com')
                     </div>
                   <div className="chat-message">
                     {messagesData}
-                    {
-                        messages.map((item) => (item.sender === user._id) ? (
+                    { messages?.map((item) => (item.sender === user._id) ? (
                             <div className="me-message">
                             <img 
                                src={user?.profilePhoto?.url}
