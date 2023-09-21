@@ -57,32 +57,30 @@ const Message = () => {
                         chatId: message?.chat?._id,
                         sender: user._id,
                         content: newSend,
-                        frindId: frindData._id
+                        frindId: frindData?._id
                     }
 
 
                    const sendNewMessage = (data) =>  {
-                     socket.emit('sendNewMessage' , data)
+                     socket.emit('sendNewMessage', data)
                      setNewSend('')
                    }
  
 
     console.log(frindData)
-   
+   useEffect(() => {
+       dispatch(newMessageOn(id))
+
+   }, [])
 
   
       useEffect(() => {
-
-        dispatch(newMessageOn(id))
         const chatId = message?.chat?._id
         socket.emit('newConnectChat', chatId)
         socket.on('newMessage', data => {
                setMessages((messag) => [ ...messag, data])
         })
-        return () => {
-            socket.disconnect()
-          }
-
+       
      }, [])
 
     return (
