@@ -27,8 +27,8 @@ const Message = ({ socket }) => {
      
                     const data = {
                         chatId: message?.chat?._id,
-                        sender: user._id,
-                        content: newSend,
+                        sender: user?._id,
+                        content: newSend
                     }
 
 
@@ -48,6 +48,7 @@ const Message = ({ socket }) => {
   
       useEffect(() => {
         let chatId = message?.chat?._id
+        
         socket.emit('newConnectChat', chatId)
         socket.on('newMessage', data => {
                setMessages((messag) => [ ...messag, data])
