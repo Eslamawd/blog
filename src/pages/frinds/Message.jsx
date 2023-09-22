@@ -20,7 +20,7 @@ const Message = ({ socket }) => {
 
     const messageInChatAraay = message?.message;
     
-    const chatId = message?.chat?._id
+    const chatId = message?.chat?._id;
     
     const frindData = message?.chat?.userInChat?.find(frind => frind.id !== user._id);
     
@@ -34,7 +34,8 @@ const Message = ({ socket }) => {
 
 
                    const sendNewMessage = () =>  {
-                     socket.emit('sendNewMessage', data).then(setNewSend(''))
+                     socket.emit('sendNewMessage', data);
+                     setNewSend('');
                    }
  
 
@@ -43,18 +44,12 @@ const Message = ({ socket }) => {
 
        useEffect(() => {
          dispatch(newMessageOn(id))
+         socket.emit('newConnectChat', chatId)
+         socket.on('newMessage', data => {
+                       setMessages((messag) => [ ...messag, data])
+                   })
+             }, [dispatch, id, socket, chatId])
 
-             }, [dispatch, id])
-
-  
-      useEffect(() => {
-
-        socket.emit('newConnectChat', chatId)
-        socket.on('newMessage', data => {
-               setMessages((messag) => [ ...messag, data])
-        })
-       
-     }, [socket,chatId])
 
     return (
         
@@ -72,30 +67,30 @@ const Message = ({ socket }) => {
                   <div className="chat-message">
                     {messageInChatAraay?.map((item) => (item.sender === user?._id) ? (
         
-        <div className="me-message">
-              <img 
-                 src={user?.profilePhoto?.url}
-                 alt=""
-                 className="table-user-image"
-             />
-             <span> {item.content}</span>
+                            <div className="me-message">
+                                <img 
+                                    src={user?.profilePhoto?.url}
+                                    alt=""
+                                    className="table-user-image"
+                                />
+                                <span> {item.content}</span>
 
-      </div>
-        
-     ) : (
-        
-           <div className="frends-message">
-                 <img 
-                         src={frindData?.profilePhoto?.url}
-                         alt=""
-                         className="table-user-image"
-                 />
-                  <span>{item.content}</span>
-         </div>
-        
-     )
- )
-}
+                        </div>
+                            
+                        ) : (
+                            
+                            <div className="frends-message">
+                                    <img 
+                                            src={frindData?.profilePhoto?.url}
+                                            alt=""
+                                            className="table-user-image"
+                                    />
+                                    <span>{item.content}</span>
+                            </div>
+                            
+                        )
+                    )
+                    }
                     { messages?.map((item) => (item.sender === user?._id) ? (
                             <div className="me-message">
                             <img 
@@ -129,7 +124,7 @@ const Message = ({ socket }) => {
                               />
 
                    
-                    <button className="send-message" onClick={sendNewMessage()}>
+                    <button className="send-message" onClick={() => sendNewMessage()}>
                         Send
                     </button>
                     </div>
