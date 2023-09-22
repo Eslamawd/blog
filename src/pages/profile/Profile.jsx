@@ -7,7 +7,7 @@ import UpdateProfile from "./UpdateProfile";
 import { useDispatch, useSelector } from "react-redux";
 import { deleteProfile, getUserProfile, uploadProfilePhoto } from "../../redux/apiCalls/profileApiCall";
 import { logoutUser } from "../../redux/apiCalls/authApiCalls";
-import { useParams, useNavigate, Link } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 import { MutatingDots } from "react-loader-spinner";
 import { deleteOneFrinds, deleteOneRequist, deleteSend, frindOkRequist, newRequistFrinds } from "../../redux/apiCalls/frindsApiCalls";
 import io from 'socket.io-client';
