@@ -62,7 +62,7 @@ function App() {
      return () => {
        socket.disconnect()
      }
-  },[])
+  },[user])
   console.log(requistFrind)
   console.log(onlineFrinds)
 

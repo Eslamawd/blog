@@ -21,7 +21,7 @@ const AdminMain = () => {
             dispatch(getUserCount());
             dispatch(getPostCount());
             dispatch(featchAllCommentPost());
-    }, [])
+    }, [dispatch])
 
     return (
         <div className="admin-main">

@@ -20,13 +20,14 @@ const Message = ({ socket }) => {
 
     const messageInChatAraay = message?.message;
     
+    const chatId = message?.chat?._id
     
     const frindData = message?.chat?.userInChat?.find(frind => frind.id !== user._id);
     
     
      
                     const data = {
-                        chatId: message?.chat?._id,
+                        chatId: chatId,
                         sender: user?._id,
                         content: newSend
                     }
@@ -34,27 +35,26 @@ const Message = ({ socket }) => {
 
                    const sendNewMessage = () =>  {
                      socket.emit('sendNewMessage', data)
-                     setNewSend('')
                    }
  
 
     console.log(frindData)
+    console.log(data)
 
        useEffect(() => {
          dispatch(newMessageOn(id))
 
-             }, [])
+             }, [dispatch, id])
 
   
       useEffect(() => {
-        let chatId = message?.chat?._id
-        
+
         socket.emit('newConnectChat', chatId)
         socket.on('newMessage', data => {
                setMessages((messag) => [ ...messag, data])
         })
        
-     }, [])
+     }, [socket,chatId])
 
     return (
         
@@ -70,7 +70,7 @@ const Message = ({ socket }) => {
                         </h1>
                     </div>
                   <div className="chat-message">
-                    {messageInChatAraay?.map((item) => (item?.sender === user?._id) ? (
+                    {messageInChatAraay?.map((item) => (item.sender === user?._id) ? (
         
         <div className="me-message">
               <img 
