@@ -12,6 +12,11 @@ const messageSlice = createSlice({
         setMessage(state, action) {
             state.message = action.payload
         },
+        
+        setNewMessage(state, action) {
+            state.message = state.message.push(action.payload)
+        },
+        
         deleteMessage(state, action) {
             state.message = state.message.filter(c => c._id !== action.payload)
         },

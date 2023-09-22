@@ -46,11 +46,12 @@ function App() {
 
   
   useEffect(() => {
+    const id = user?._id
     socket.on('connect', () => {
-      const id = user?._id
       socket.emit('roomNotfications', id)
-      socket.emit('goOnline', id)
     })
+    socket.emit('goOnline', id)
+    socket.emit('getOnlineFrinds', id)
     socket.on('newFrindRequist', data => {
       setRequistFrind((requist) => [ ...requist, data ])
      })

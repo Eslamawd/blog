@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import './message.css';
 import { useSelector, useDispatch } from "react-redux";
 import {  useParams } from "react-router-dom";
-import { newMessageOn } from '../../redux/apiCalls/messageApiCall';
+import { getNewMessage, newMessageOn } from '../../redux/apiCalls/messageApiCall';
 
 const Message = ({ socket }) => {
     
@@ -35,7 +35,6 @@ const Message = ({ socket }) => {
 
                    const sendNewMessage = () =>  {
                      socket.emit('sendNewMessage', data);
-                     setNewSend('');
                    }
  
 
@@ -48,7 +47,8 @@ const Message = ({ socket }) => {
          socket.on('newMessage', data => {
                        setMessages((messag) => [ ...messag, data])
                    })
-             }, [dispatch, id, socket, chatId])
+        dispatch(getNewMessage(messages))
+             }, [])
 
 
     return (
@@ -61,7 +61,7 @@ const Message = ({ socket }) => {
                             className="table-user-image"
                         />
                         <h1 className="">
-                        {frindData?.username} salma awod
+                        {frindData?.username}
                         </h1>
                     </div>
                   <div className="chat-message">
@@ -89,29 +89,7 @@ const Message = ({ socket }) => {
                             </div>
                             
                         )
-                    )
-                    }
-                    { messages?.map((item) => (item.sender === user?._id) ? (
-                            <div className="me-message">
-                            <img 
-                               src={user?.profilePhoto?.url}
-                               alt=""
-                               className="table-user-image"
-                           />
-                           <span> {item.content}</span>
-
-                    </div>
-                        ) : (
-                            <div className="frends-message">
-                            <img 
-                                    src={frindData?.profilePhoto?.url}
-                                    alt=""
-                                    className="table-user-image"
-                            />
-                             <span>{item.content}</span>
-                    </div>
-                        ))
-                    }
+                    )}
                   
                   </div>
                     <div className="send-on-message">

@@ -36,3 +36,16 @@ export function getChatMe() {
 
     }
 }
+export function getNewMessage(message) {
+    return async (dispatch, getState) => {
+        try {
+           
+
+           await dispatch(messageActions.setNewMessage(message));
+
+        } catch (error) {
+          toast.error(error.response.data.message);
+        }
+
+    }
+}
