@@ -189,7 +189,7 @@ const socket = io('https://blog-api-61qi.onrender.com')
                  )}
                {isFrinds && (
                 <>
-                 <button className="profile-update-btn" onClick={navigate(`/message/${profile._id}`)}>
+                 <button className="profile-update-btn" onClick={ () => navigate(`/message/${profile._id}`)}>
                  Message
                  </button>
                  <button className="profile-update-btn" onClick={() => deleteFrinds()}>
@@ -198,7 +198,7 @@ const socket = io('https://blog-api-61qi.onrender.com')
                  </button>
                  </>
                  )}
-                 {(!isRequist && !isUserSend && !isFrinds && (user?._id !== profile?._id) ) && (
+                 { !isRequist && !isUserSend && !isFrinds && (user?._id !== profile?._id)  && (
                   <button className="profile-update-btn" onClick={() => addRequist(profile?._id, data)}>
                   <i className="bi bi-file-person-fill"></i>
                    Add Freind
