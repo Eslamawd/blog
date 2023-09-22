@@ -102,7 +102,7 @@ function App() {
       <Route path="forget-password" element={< ForgetPassword />} /> 
       <Route path="reset-password/:userId/:token/:a" element={< ResetPassword />} /> 
 
-      <Route path="profile/:id" element={ <Profile /> }/>
+      <Route path="profile/:id" element={ <Profile socket={socket} /> }/>
       <Route path="frinds" element={ <Frinds /> }/>
       <Route path="message/:id" element={ <Message socket={socket} /> }/>
       <Route path="chat" element={ <Chats /> }/>

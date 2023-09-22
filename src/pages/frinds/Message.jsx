@@ -47,8 +47,7 @@ const Message = ({ socket }) => {
          socket.on('newMessage', data => {
                        setMessages((messag) => [ ...messag, data])
                    })
-        dispatch(getNewMessage(messages))
-             }, [])
+             }, [dispatch, chatId, id, socket])
 
 
     return (
@@ -65,32 +64,69 @@ const Message = ({ socket }) => {
                         </h1>
                     </div>
                   <div className="chat-message">
-                    {messageInChatAraay?.map((item) => (item.sender === user?._id) ? (
-        
-                            <div className="me-message">
-                                <img 
-                                    src={user?.profilePhoto?.url}
-                                    alt=""
-                                    className="table-user-image"
-                                />
-                                <span> {item.content}</span>
 
-                        </div>
-                            
-                        ) : (
-                            
-                            <div className="frends-message">
-                                    <img 
-                                            src={frindData?.profilePhoto?.url}
+                    { !messages ? messageInChatAraay?.map((item, index) =>  (
+                        
+                            <div>
+                                    { item.sender === user?._id &&   (
+                                            <div className="me-message">
+                                        <img 
+                                            src={user?.profilePhoto?.url}
                                             alt=""
                                             className="table-user-image"
-                                    />
-                                    <span>{item.content}</span>
+                                        />
+                                        <span> {item.content}</span>
+
+                                        </div>
+                                    
+                                        )
+                                     } 
+                                     
+                                     { item.sender !== user?._id && (
+                                        
+                                        <div className="frends-message">
+                                            <img 
+                                                    src={frindData?.profilePhoto?.url}
+                                                    alt=""
+                                                    className="table-user-image"
+                                            />
+                                            <span>{item.content}</span>
+                                        </div>
+                                    
+                                            )}
                             </div>
+                         
+                    )) : messages.map((item, index) => (
+                        <div>
+                        { item.sender === user?._id &&   (
+                                <div className="me-message">
+                            <img 
+                                src={user?.profilePhoto?.url}
+                                alt=""
+                                className="table-user-image"
+                            />
+                            <span> {item.content}</span>
+
+                            </div>
+                        
+                            )
+                         } 
+                         
+                         { item.sender !== user?._id && (
                             
-                        )
-                    )}
-                  
+                            <div className="frends-message">
+                                <img 
+                                        src={frindData?.profilePhoto?.url}
+                                        alt=""
+                                        className="table-user-image"
+                                />
+                                <span>{item.content}</span>
+                            </div>
+                        
+                                )}
+                </div>
+             
+                    ))}
                   </div>
                     <div className="send-on-message">
                       

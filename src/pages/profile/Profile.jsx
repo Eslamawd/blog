@@ -10,9 +10,9 @@ import { logoutUser } from "../../redux/apiCalls/authApiCalls";
 import { useParams, useNavigate } from "react-router-dom";
 import { MutatingDots } from "react-loader-spinner";
 import { deleteOneFrinds, deleteOneRequist, deleteSend, frindOkRequist, newRequistFrinds } from "../../redux/apiCalls/frindsApiCalls";
-import io from 'socket.io-client';
 
-const Profile = () => {
+
+const Profile = ({ socket }) => {
 
     const dispatch = useDispatch();
     const { profile, loading, isProfileDeleted } = useSelector(state => state.profile);
@@ -36,7 +36,9 @@ const Profile = () => {
     
     const isUserSend = profile?.requestFrinds?.find((userReq) => userReq === user?._id);
     const isRequist = profile?.sendRequist?.find((userSen) => userSen === user?._id);
-    const isFrinds = profile?.frinds?.find((userFren) => userFren === user?._id);
+    const isFrinds = profile?.frinds?.find((userFren) => userFren.toString() === user?._id);
+
+    console.log()
 
     useEffect(() => {
         dispatch(getUserProfile(id))
@@ -77,7 +79,7 @@ const Profile = () => {
 
           //frinds in profile 
           
-const socket = io('https://blog-api-61qi.onrender.com')
+
 
 
           const addRequist = (id, data) => {
@@ -198,12 +200,13 @@ const socket = io('https://blog-api-61qi.onrender.com')
                  </button>
                  </>
                  )}
-                 { !isRequist && !isUserSend && !isFrinds && (user?._id !== profile?._id)  && (
+                 { ( (!isRequist && (!isUserSend && !isFrinds)) || (user?._id !== profile?._id) ) && (
                   <button className="profile-update-btn" onClick={() => addRequist(profile?._id, data)}>
                   <i className="bi bi-file-person-fill"></i>
                    Add Freind
                   </button>
                  ) 
+                 
                  }
             </div>
             </div>
