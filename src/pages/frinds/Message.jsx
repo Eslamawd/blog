@@ -34,7 +34,7 @@ const Message = ({ socket }) => {
 
 
                    const sendNewMessage = () =>  {
-                     socket.emit('sendNewMessage', data)
+                     socket.emit('sendNewMessage', data).then(setNewSend(''))
                    }
  
 
@@ -78,7 +78,7 @@ const Message = ({ socket }) => {
                  alt=""
                  className="table-user-image"
              />
-             <span> {item.content}Lorem ipsum dolor sit amet consectetur adipisicing elit. Assumenda ut rem tempora quam dicta, sint odio adipisci neque veritatis ab unde minus alias atque, corporis autem saepe aperiam, vel inventore.</span>
+             <span> {item.content}</span>
 
       </div>
         
@@ -90,7 +90,7 @@ const Message = ({ socket }) => {
                          alt=""
                          className="table-user-image"
                  />
-                  <span>{item.content} Lorem ipsum dolor sit amet consectetur adipisicing elit. Assumenda ut rem tempora quam dicta, sint odio adipisci neque veritatis ab unde minus alias atque, corporis autem saepe aperiam, vel inventore.</span>
+                  <span>{item.content}</span>
          </div>
         
      )
@@ -103,7 +103,7 @@ const Message = ({ socket }) => {
                                alt=""
                                className="table-user-image"
                            />
-                           <span> {item.content}Lorem ipsum dolor sit amet consectetur adipisicing elit. Assumenda ut rem tempora quam dicta, sint odio adipisci neque veritatis ab unde minus alias atque, corporis autem saepe aperiam, vel inventore.</span>
+                           <span> {item.content}</span>
 
                     </div>
                         ) : (
@@ -113,7 +113,7 @@ const Message = ({ socket }) => {
                                     alt=""
                                     className="table-user-image"
                             />
-                             <span>{item.content} Lorem ipsum dolor sit amet consectetur adipisicing elit. Assumenda ut rem tempora quam dicta, sint odio adipisci neque veritatis ab unde minus alias atque, corporis autem saepe aperiam, vel inventore.</span>
+                             <span>{item.content}</span>
                     </div>
                         ))
                     }
@@ -129,7 +129,7 @@ const Message = ({ socket }) => {
                               />
 
                    
-                    <button className="send-message" onClick={() => sendNewMessage()}>
+                    <button className="send-message" onClick={sendNewMessage()}>
                         Send
                     </button>
                     </div>

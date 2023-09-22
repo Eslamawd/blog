@@ -34,10 +34,9 @@ const Profile = () => {
     const { id } =  useParams();
 
     
-    const isUserSend = profile?.requestFrinds?.find((userReq) => userReq === user?._id)
-    const isRequist = profile?.sendRequist?.find((userSen) => userSen === user?._id)
-    const isFrinds = profile?.frinds?.find((userFren) => userFren === user?._id)
-    
+    const isUserSend = profile?.requestFrinds?.find((userReq) => userReq === user?._id);
+    const isRequist = profile?.sendRequist?.find((userSen) => userSen === user?._id);
+    const isFrinds = profile?.frinds?.find((userFren) => userFren === user?._id);
 
     useEffect(() => {
         dispatch(getUserProfile(id))
@@ -190,10 +189,8 @@ const socket = io('https://blog-api-61qi.onrender.com')
                  )}
                {isFrinds && (
                 <>
-                 <button className="profile-update-btn">
-                 <Link to={`message/${profile._id}`}>
+                 <button className="profile-update-btn" onClick={navigate(`/message/${profile._id}`)}>
                  Message
-                 </Link>
                  </button>
                  <button className="profile-update-btn" onClick={() => deleteFrinds()}>
                  <i className="bi bi-file-person-fill"></i>
@@ -201,13 +198,12 @@ const socket = io('https://blog-api-61qi.onrender.com')
                  </button>
                  </>
                  )}
-                 {(!isRequist && !isUserSend && !isFrinds && user?._id !== profile?._id) ? (
+                 {(!isRequist && !isUserSend && !isFrinds && (user?._id !== profile?._id) ) && (
                   <button className="profile-update-btn" onClick={() => addRequist(profile?._id, data)}>
                   <i className="bi bi-file-person-fill"></i>
                    Add Freind
                   </button>
-                 ) :
-                  null
+                 ) 
                  }
             </div>
             </div>
