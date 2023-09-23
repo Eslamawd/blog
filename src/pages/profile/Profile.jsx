@@ -36,9 +36,9 @@ const Profile = ({ socket }) => {
     
     const isUserSend = profile?.requestFrinds?.find((userReq) => userReq === user?._id);
     const isRequist = profile?.sendRequist?.find((userSen) => userSen === user?._id);
-    const isFrinds = profile?.frinds?.find((userFren) => userFren.toString() === user?._id);
+    const isFrinds = profile?.frinds?.find((userFren) => userFren === user?._id);
 
-    console.log()
+    console.log( isFrinds)
 
     useEffect(() => {
         dispatch(getUserProfile(id))
@@ -200,7 +200,7 @@ const Profile = ({ socket }) => {
                  </button>
                  </>
                  )}
-                 { ( (!isRequist && (!isUserSend && !isFrinds)) || (user?._id !== profile?._id) ) && (
+                 { ((!isRequist && !isUserSend && !isFrinds) && (user?._id !== profile?._id) ) && (
                   <button className="profile-update-btn" onClick={() => addRequist(profile?._id, data)}>
                   <i className="bi bi-file-person-fill"></i>
                    Add Freind

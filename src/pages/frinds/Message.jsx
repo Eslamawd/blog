@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import './message.css';
 import { useSelector, useDispatch } from "react-redux";
 import {  useParams } from "react-router-dom";
-import { getNewMessage, newMessageOn } from '../../redux/apiCalls/messageApiCall';
+import { newMessageOn } from '../../redux/apiCalls/messageApiCall';
 
 const Message = ({ socket }) => {
     
@@ -65,11 +65,9 @@ const Message = ({ socket }) => {
                     </div>
                   <div className="chat-message">
 
-                    { !messages ? messageInChatAraay?.map((item, index) =>  (
+                    { !messages ? messageInChatAraay?.map((item) =>  (
                         
-                            <div>
-                                    { item.sender === user?._id &&   (
-                                            <div className="me-message">
+                                    <div className={(item.sender === user?._id) ? "me-message" : "frends-message"}>
                                         <img 
                                             src={user?.profilePhoto?.url}
                                             alt=""
@@ -80,53 +78,22 @@ const Message = ({ socket }) => {
                                         </div>
                                     
                                         )
-                                     } 
-                                     
-                                     { item.sender !== user?._id && (
-                                        
-                                        <div className="frends-message">
-                                            <img 
-                                                    src={frindData?.profilePhoto?.url}
-                                                    alt=""
-                                                    className="table-user-image"
-                                            />
-                                            <span>{item.content}</span>
-                                        </div>
-                                    
-                                            )}
-                            </div>
+                                 
+              
                          
-                    )) : messages.map((item, index) => (
-                        <div>
-                        { item.sender === user?._id &&   (
-                                <div className="me-message">
-                            <img 
-                                src={user?.profilePhoto?.url}
-                                alt=""
-                                className="table-user-image"
-                            />
-                            <span> {item.content}</span>
+                    ) : messages?.map((item) => (
+                        <div className={(item.sender === user?._id) ? "me-message" : "frends-message"}>
+                        <img 
+                            src={user?.profilePhoto?.url}
+                            alt=""
+                            className="table-user-image"
+                        />
+                        <span> {item.content}</span>
 
-                            </div>
-                        
-                            )
-                         } 
-                         
-                         { item.sender !== user?._id && (
-                            
-                            <div className="frends-message">
-                                <img 
-                                        src={frindData?.profilePhoto?.url}
-                                        alt=""
-                                        className="table-user-image"
-                                />
-                                <span>{item.content}</span>
-                            </div>
-                        
-                                )}
-                </div>
-             
-                    ))}
+                        </div>
+
+                    ))
+                    }
                   </div>
                     <div className="send-on-message">
                       
