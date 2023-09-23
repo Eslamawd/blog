@@ -51,18 +51,7 @@
     overflow-y: scroll;
 
 }
-.chat-message::-webkit-scrollbar {
-    width: 5px;
-}
 
-.chat-message::-webkit-scrollbar-track {
-    background-color: rgb(187, 179, 179);
-  }
-  
-  .chat-message::-webkit-scrollbar-thumb {
-    background-color: var(--dark-color);
-    border-radius: 15px;
-  }
 
 .send-on-message {
     margin: 22px;  
@@ -121,7 +110,7 @@
 .me-message {
     display: flex;
     position: relative;
-    margin-top: 20px;
+    margin: 20px 0;
     flex-direction: row-reverse;
 }
 .me-message img {
@@ -138,3 +127,15 @@
     border-radius: 7px;
 }
 
+.chat-message::-webkit-scrollbar {
+    width: 5px;
+}
+
+.chat-message::-webkit-scrollbar-track {
+    background-color: rgb(187, 179, 179);
+  }
+  
+  .chat-message::-webkit-scrollbar-thumb {
+    background-color: var(--dark-color);
+    border-radius: 15px;
+  }

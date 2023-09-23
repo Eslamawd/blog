@@ -47,7 +47,7 @@ const Message = ({ socket }) => {
          socket.on('newMessage', data => {
                        setMessages((messag) => [ ...messag, data])
                    })
-             }, [])
+             }, [messages,dispatch,chatId, socket, id])
 
 
     return (
@@ -65,11 +65,11 @@ const Message = ({ socket }) => {
                     </div>
                   <div className="chat-message">
 
-                    { (messages.length > 1 )? messageInChatAraay?.map((item) =>  (
+                    { (messages?.length > 1 ) ? messageInChatAraay?.map((item) =>  (
                         
                                     <div className={(item.sender === user?._id) ? "me-message" : "frends-message"}>
                                         <img 
-                                            src={user?.profilePhoto?.url}
+                                            src={(item.sender === user?._id) ? user?.profilePhoto?.url : frindData?.profilePhoto?.url }
                                             alt=""
                                             className="table-user-image"
                                         />
