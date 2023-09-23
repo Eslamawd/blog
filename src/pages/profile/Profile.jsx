@@ -200,7 +200,7 @@ const Profile = ({ socket }) => {
                  </button>
                  </>
                  )}
-                 { ((!isRequist && !isUserSend && !isFrinds) && (user?._id !== profile?._id) ) && (
+                 { ((!isRequist & !isUserSend & !isFrinds) & (user?._id !== profile?._id)) && (
                   <button className="profile-update-btn" onClick={() => addRequist(profile?._id, data)}>
                   <i className="bi bi-file-person-fill"></i>
                    Add Freind
