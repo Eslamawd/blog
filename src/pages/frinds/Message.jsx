@@ -38,8 +38,8 @@ const Message = ({ socket }) => {
                    }
  
 
-    console.log(frindData)
-    console.log(data)
+    console.log(messageInChatAraay)
+    console.log(messages)
 
        useEffect(() => {
          dispatch(newMessageOn(id))
@@ -65,7 +65,7 @@ const Message = ({ socket }) => {
                     </div>
                   <div className="chat-message">
 
-                    { !messages ? messageInChatAraay?.map((item) =>  (
+                    { messages.length >= 0 ? messageInChatAraay?.map((item) =>  (
                         
                                     <div className={(item.sender === user?._id) ? "me-message" : "frends-message"}>
                                         <img 
