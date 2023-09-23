@@ -36,6 +36,8 @@ const Message = ({ socket }) => {
                    const sendNewMessage = () =>  {
                      socket.emit('sendNewMessage', data);
                    }
+
+                   
  
 
     console.log(messageInChatAraay)
@@ -65,7 +67,7 @@ const Message = ({ socket }) => {
                     </div>
                   <div className="chat-message">
 
-                    { (messages?.length > 1 ) ? messageInChatAraay?.map((item) =>  (
+                    {   messageInChatAraay?.map((item) =>  (
                         
                                     <div className={(item.sender === user?._id) ? "me-message" : "frends-message"}>
                                         <img 
@@ -77,25 +79,23 @@ const Message = ({ socket }) => {
 
                                         </div>
                                     
-                                        )
-                                 
-              
-                         
-                    ) : messages?.map((item) => (
-                        <div className={(item.sender === user?._id) ? "me-message" : "frends-message"}>
-                        <img 
-                            src={user?.profilePhoto?.url}
-                            alt=""
-                            className="table-user-image"
-                        />
-                        <span> {item.content}</span>
+                                        ))
+                                                  
+                            } { messages?.map((item) => (
+                                                    <div className={(item.sender === user?._id) ? "me-message" : "frends-message"}>
+                                                    <img 
+                                                        src={user?.profilePhoto?.url}
+                                                        alt=""
+                                                        className="table-user-image"
+                                                    />
+                                                    <span> {item.content}</span>
 
-                        </div>
+                                                    </div>
 
-                    ))
-                    }
-                  </div>
-                    <div className="send-on-message">
+                                                ))
+                                                }
+                                            </div>
+                                <div className="send-on-message">
                       
                               <input 
                               type="text"

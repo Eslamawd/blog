@@ -93,6 +93,7 @@
 .frends-message {
     display: flex;
     position: relative;
+    width: 85%;
     margin-top: 20px;
 }
 .frends-message img {
@@ -110,6 +111,7 @@
 .me-message {
     display: flex;
     position: relative;
+    width: 85%;
     margin: 20px 0;
     flex-direction: row-reverse;
 }
